@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="RPG Engine"
+run/main_scene="uid://c7qhp0q77wx34"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=2560
+window/size/viewport_height=1440
+window/stretch/scale=0.5

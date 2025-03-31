@@ -9,6 +9,20 @@ func _ready():
 	# print current location data to console:
 	printLocationData()
 
+func _input(event):
+	if event.is_action_pressed("w"):
+		print("w pressed")
+	if event.is_action_pressed("a"):
+		print("a pressed")
+	if event.is_action_pressed("s"):
+		print("s pressed")
+	if event.is_action_pressed("d"):
+		print("d pressed")
+		
+
+func performLocationAction():
+	pass
+
 # print current location and its data:
 func printLocationData():
 	# print name of location

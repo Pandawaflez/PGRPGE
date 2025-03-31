@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=2 format=3 uid="uid://ctnfnjwbqflwl"]
+
+[ext_resource type="Script" uid="uid://c1awqokr4rere" path="res://Scripts/location_data.gd" id="1_d5atg"]
+
+[resource]
+script = ExtResource("1_d5atg")
+name = "Location"
+w = ""
+a = ""
+s = ""
+d = ""
+e = ""
+q = ""
+one = ""
+two = ""
+three = ""
+four = ""
+five = ""
+six = ""
+seven = ""
+eight = ""
+nine = ""
+zero = ""
+metadata/_custom_type_script = "uid://c1awqokr4rere"

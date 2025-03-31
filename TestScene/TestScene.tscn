@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=5 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
+[ext_resource type="Script" uid="uid://dk3h18u23t6ja" path="res://Scripts/location.gd" id="2_5qwqp"]
+[ext_resource type="Resource" uid="uid://ctnfnjwbqflwl" path="res://TestScene/locationData/location0data.tres" id="3_rf4oh"]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="NavigationManager" type="Node2D" parent="."]
+[node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation")]
 script = ExtResource("1_0xtca")
+currentLocation = NodePath("../Location0")
+
+[node name="Location0" type="Node2D" parent="."]
+script = ExtResource("2_5qwqp")
+locationData = ExtResource("3_rf4oh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Location0"]
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)

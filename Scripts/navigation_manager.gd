@@ -3,6 +3,8 @@ extends Node2D
 @export var currentLocation:Location
 var currentLocationData:LocationData
 
+#@onready var animationPlayer = $Animation_Player
+
 func _ready():
 	# load location data:
 	currentLocationData = currentLocation.locationData
@@ -18,9 +20,32 @@ func _input(event):
 		print("s pressed")
 	if event.is_action_pressed("d"):
 		print("d pressed")
-		
+	if event.is_action_pressed("e"):
+		print("e pressed")
+	if event.is_action_pressed("q"):
+		print("q pressed")
+	if event.is_action_pressed("1"):
+		print("1 pressed")
+	if event.is_action_pressed("2"):
+		print("2 pressed")
+	if event.is_action_pressed("3"):
+		print("3 pressed")
+	if event.is_action_pressed("4"):
+		print("4 pressed")
+	if event.is_action_pressed("5"):
+		print("5 pressed")
+	if event.is_action_pressed("6"):
+		print("6 pressed")
+	if event.is_action_pressed("7"):
+		print("7 pressed")
+	if event.is_action_pressed("8"):
+		print("8 pressed")
+	if event.is_action_pressed("9"):
+		print("9 pressed")
+	if event.is_action_pressed("0"):
+		print("0 pressed")
 
-func performLocationAction():
+func performLocationAction(  ):
 	pass
 
 # print current location and its data:

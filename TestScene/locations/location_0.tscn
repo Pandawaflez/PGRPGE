@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgi6dex7t0nud"]
+[gd_scene load_steps=3 format=3 uid="uid://beb7rj8avb11r"]
 
 [ext_resource type="Script" uid="uid://dk3h18u23t6ja" path="res://Scripts/location.gd" id="1_6a0kp"]
 [ext_resource type="Resource" uid="uid://54fv6ehqf7p6" path="res://TestScene/location0data.tres" id="2_hqixf"]

@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=6 format=4 uid="uid://c7qhp0q77wx34"]
 
-[ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
-[ext_resource type="PackedScene" uid="uid://cgi6dex7t0nud" path="res://TestScene/locations/location_0.tscn" id="2_rf4oh"]
-[ext_resource type="PackedScene" uid="uid://2d1ndbvmanur" path="res://TestScene/locations/location_1.tscn" id="3_tkqkb"]
+[ext_resource type="Script" uid="uid://dk3h18u23t6ja" path="res://Scripts/location.gd" id="1_tkqkb"]
+[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
+[ext_resource type="Resource" uid="uid://54fv6ehqf7p6" path="res://TestScene/location0data.tres" id="3_rtsy5"]
+[ext_resource type="Resource" uid="uid://bq2343b8b3xp" path="res://TestScene/location1data.tres" id="4_hft80"]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation")]
-script = ExtResource("1_0xtca")
-currentLocation = NodePath("../Location0")
+[node name="NavigationManager" type="Node2D" parent="."]
+script = ExtResource("1_tkqkb")
 
-[node name="Location0" parent="." instance=ExtResource("2_rf4oh")]
+[node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+locationData = ExtResource("3_rtsy5")
 
-[node name="Location1" parent="." instance=ExtResource("3_tkqkb")]
+[node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+locationData = ExtResource("4_hft80")
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)

@@ -14,6 +14,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("w"):
 		print("w pressed")
+		performLocationAction("w")
 	if event.is_action_pressed("a"):
 		print("a pressed")
 	if event.is_action_pressed("s"):
@@ -45,9 +46,19 @@ func _input(event):
 	if event.is_action_pressed("0"):
 		print("0 pressed")
 
-func performLocationAction(  ):
-	pass
-
+func performLocationAction( input:String ):
+	if ( input == "w" ):
+		if ( currentLocation.actionW != null ):
+			print(currentLocation.actionW.actionName)
+	if ( input == "a" ):
+		if ( currentLocation.actionA != null ):
+			print(currentLocation.actionA.actionName)
+	if ( input == "s" ):
+		if ( currentLocation.actionS != null ):
+			print(currentLocation.actionS.actionName)
+	if ( input == "d" ):
+		if ( currentLocation.actionD != null ):
+			print(currentLocation.actionD.actionName)
 # print current location and its data:
 func printLocationData():
 	# print name of location

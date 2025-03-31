@@ -17,34 +17,49 @@ func _input(event):
 		performLocationAction("w")
 	if event.is_action_pressed("a"):
 		print("a pressed")
+		performLocationAction("a")
 	if event.is_action_pressed("s"):
 		print("s pressed")
+		performLocationAction("s")
 	if event.is_action_pressed("d"):
 		print("d pressed")
+		performLocationAction("d")
 	if event.is_action_pressed("e"):
 		print("e pressed")
+		performLocationAction("e")
 	if event.is_action_pressed("q"):
 		print("q pressed")
+		performLocationAction("q")
 	if event.is_action_pressed("1"):
 		print("1 pressed")
+		performLocationAction("1")
 	if event.is_action_pressed("2"):
 		print("2 pressed")
+		performLocationAction("2")
 	if event.is_action_pressed("3"):
 		print("3 pressed")
+		performLocationAction("3")
 	if event.is_action_pressed("4"):
 		print("4 pressed")
+		performLocationAction("4")
 	if event.is_action_pressed("5"):
 		print("5 pressed")
+		performLocationAction("5")
 	if event.is_action_pressed("6"):
 		print("6 pressed")
+		performLocationAction("6")
 	if event.is_action_pressed("7"):
 		print("7 pressed")
+		performLocationAction("7")
 	if event.is_action_pressed("8"):
 		print("8 pressed")
+		performLocationAction("8")
 	if event.is_action_pressed("9"):
 		print("9 pressed")
+		performLocationAction("9")
 	if event.is_action_pressed("0"):
 		print("0 pressed")
+		performLocationAction("0")
 
 func performLocationAction( input:String ):
 	if ( input == "w" ):

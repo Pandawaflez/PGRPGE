@@ -17,7 +17,10 @@ currentLocation = NodePath("Location0")
 locationData = ExtResource("3_rtsy5")
 
 [node name="ActionW" parent="NavigationManager/Location0" instance=ExtResource("4_lmtjt")]
-actionName = "ActionWasdgasdg"
+actionName = "Go To Location 2"
+
+[node name="ActionE" parent="NavigationManager/Location0" instance=ExtResource("4_lmtjt")]
+actionName = "Examine Location"
 
 [node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locationData = ExtResource("4_hft80")

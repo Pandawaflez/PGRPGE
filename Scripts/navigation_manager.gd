@@ -110,12 +110,48 @@ func performLocationAction( input:String ):
 	if ( input == "0" ):
 		if ( currentLocation.action0 != null ):
 			print(currentLocation.action0.actionName)
+
 # print current location and its data:
 func printLocationData():
+	print("Location: ")
 	# print name of location
 	print(currentLocationData.locationName)
+	# print names of the Actions:
+	print("Action Data: ")
+	print("W: ")
+	printAction(currentLocation.actionW)
+	print("A: ")
+	printAction(currentLocation.actionA)
+	print("S: ")
+	printAction(currentLocation.actionS)
+	print("D: ")
+	printAction(currentLocation.actionD)
+	print("E: ")
+	printAction(currentLocation.actionE)
+	print("Q: ")
+	printAction(currentLocation.actionQ)
+	print("1: ")
+	printAction(currentLocation.action1)
+	print("2: ")
+	printAction(currentLocation.action2)
+	print("3: ")
+	printAction(currentLocation.action3)
+	print("4: ")
+	printAction(currentLocation.action4)
+	print("5: ")
+	printAction(currentLocation.action5)
+	print("6: ")
+	printAction(currentLocation.action6)
+	print("7: ")
+	printAction(currentLocation.action7)
+	print("8: ")
+	printAction(currentLocation.action8)
+	print("9: ")
+	printAction(currentLocation.action9)
+	print("0: ")
+	printAction(currentLocation.action0)
 	# print current location navigation:
-	if (currentLocationData.w != ""):
+	'''if (currentLocationData.w != ""):
 		print("w: " + currentLocationData.w)
 	if (currentLocationData.a != ""):
 		print("a: " + currentLocationData.a)
@@ -148,4 +184,15 @@ func printLocationData():
 	if (currentLocationData.nine != ""):
 		print("9: " + currentLocationData.nine)
 	if (currentLocationData.zero != ""):
-		print("0: " + currentLocationData.zero)
+		print("0: " + currentLocationData.zero)'''
+
+func printAction( action:Action ):
+	if ( action != null ):
+		print( action.actionName )
+
+func performAction( action:Action ):
+	if ( action == null ):
+		print( "No Action" )
+		return
+	print("Performing Action:" + action.actionName )
+	

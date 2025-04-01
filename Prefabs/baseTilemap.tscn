@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hrtj4rwqsyo"]
+
+[ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_nu0pb"]
+[ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="2_4w4xh"]
+
+[node name="Tilemap" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Background" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_nu0pb")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 1, 0.298039)
+tile_set = ExtResource("1_nu0pb")
+
+[node name="Midground" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 1, 0.941176)
+tile_set = ExtResource("1_nu0pb")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(672, 416)
+texture = ExtResource("2_4w4xh")
+region_enabled = true
+region_rect = Rect2(1600, 0, 64, 64)
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+modulate = Color(1, 1, 1, 0.941176)
+tile_set = ExtResource("1_nu0pb")

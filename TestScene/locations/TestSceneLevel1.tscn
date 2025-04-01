@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
-[ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://TestScene/ui_manager.gd" id="6_lmtjt"]
+[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://Prefabs/ui_manager.tscn" id="6_ul202"]
 
 [sub_resource type="Animation" id="Animation_lmtjt"]
 length = 0.001
@@ -222,7 +222,7 @@ _data = {
 [node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation", "uIManager", "playerSprite")]
 script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
-uIManager = NodePath("../UI Manager")
+uIManager = NodePath("")
 playerSprite = NodePath("../Tilemap/PlayerSprite")
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
@@ -327,45 +327,7 @@ texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)
 
-[node name="UI Manager" type="Control" parent="." node_paths=PackedStringArray("locationDescriptionBox", "navigationManager")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("6_lmtjt")
-locationDescriptionBox = NodePath("CanvasLayer/Control/ColorRect/RichTextLabel")
-navigationManager = NodePath("../NavigationManager")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="UI Manager"]
-
-[node name="Control" type="Control" parent="UI Manager/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="UI Manager/CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 64.0
-anchor_right = 64.0
-offset_left = -576.0
-offset_top = 40.0
-offset_right = -64.0
-offset_bottom = 1408.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI Manager/CanvasLayer/Control/ColorRect"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -512.0
-offset_bottom = 1408.0
-grow_horizontal = 0
-text = "sdjkflskdlkasdkfj
-hgfjhfh
-"
+[node name="UI Manager" parent="." instance=ExtResource("6_ul202")]
 
 [editable path="NavigationManager/Location0"]
 [editable path="NavigationManager/Location0/Sub-Locations/Fireplace"]

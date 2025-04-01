@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdyonxguyf7ds"]
+
+[ext_resource type="PackedScene" uid="uid://c02sqiop2pv4p" path="res://Prefabs/navigation_manager.tscn" id="1_8iie0"]
+[ext_resource type="PackedScene" uid="uid://c2hrtj4rwqsyo" path="res://Prefabs/baseTilemap.tscn" id="2_8iie0"]
+[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://Prefabs/ui_manager.tscn" id="4_bjw3f"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="NavigationManager" parent="." node_paths=PackedStringArray("uIManager", "playerSprite") instance=ExtResource("1_8iie0")]
+uIManager = NodePath("../UI Manager")
+playerSprite = NodePath("../Tilemap/PlayerSprite")
+
+[node name="Tilemap" parent="." instance=ExtResource("2_8iie0")]
+position = Vector2(-64, 64)
+
+[node name="UI Manager" parent="." instance=ExtResource("4_bjw3f")]
+
+[editable path="Tilemap"]

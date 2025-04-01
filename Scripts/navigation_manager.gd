@@ -2,6 +2,7 @@ class_name NavigationManager
 extends Node2D
 
 @export var currentLocation:Location
+@export var uIManager:UIManager
 var currentLocationData:LocationData
 
 @export var actionsAllowed:bool = true
@@ -153,8 +154,6 @@ func performAction( action:Action ):
 			print("PlayingAnimation: " + action.animationName )
 			actionsAllowed = false
 			currentLocation.animationPlayer.play(action.animationName)
-			#while( actionsAllowed == false ):
-			#	pass
 		#moving:
 		if ( action.changeLocation ):
 			if ( action.nextLocation == null ):
@@ -162,6 +161,7 @@ func performAction( action:Action ):
 			else:
 				print("Changing Location to " + action.nextLocation.locName )
 				changeLocation( action.nextLocation )
+		uIManager.setLocationData()
 	else:
 		print("Cannot Perform action, actions are not allowed at this time.")
 

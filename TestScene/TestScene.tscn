@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=17 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
@@ -6,6 +6,67 @@
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
 [ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://TestScene/ui_manager.gd" id="6_lmtjt"]
+
+[sub_resource type="Animation" id="Animation_5obu0"]
+resource_name = "return"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(672, 352), Vector2(672, 416)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..:actionsAllowed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k0vev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 416)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../..:actionsAllowed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0vev"]
+_data = {
+&"RESET": SubResource("Animation_k0vev"),
+&"return": SubResource("Animation_5obu0")
+}
 
 [sub_resource type="Animation" id="Animation_lmtjt"]
 length = 0.001
@@ -61,10 +122,39 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_n61yy"]
+resource_name = "fireplace"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(672, 416), Vector2(672, 352)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:actionsAllowed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtsy5"]
 _data = {
 &"RESET": SubResource("Animation_lmtjt"),
-&"animationW": SubResource("Animation_tkqkb")
+&"animationW": SubResource("Animation_tkqkb"),
+&"fireplace": SubResource("Animation_n61yy")
 }
 
 [sub_resource type="Animation" id="Animation_hft80"]
@@ -129,22 +219,41 @@ _data = {
 
 [node name="TestScene" type="Node2D"]
 
-[node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation")]
+[node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation", "uIManager")]
 script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
+uIManager = NodePath("../UI Manager")
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
 
-[node name="LookAround" parent="NavigationManager/Location0" instance=ExtResource("2_lmtjt")]
+[node name="Sub-Locations" type="Node2D" parent="NavigationManager/Location0"]
+
+[node name="LookAround" parent="NavigationManager/Location0/Sub-Locations" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Main Room"
 locDesc = "You are in a small, rundown longhouse.  The floor is made of packed dirt and small stones.  There is a roaring fire in the center, and stairs going to an attic and basement."
 
-[node name="ActionE" parent="NavigationManager/Location0/LookAround" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionE" parent="NavigationManager/Location0/Sub-Locations/LookAround" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Return"
 changeLocation = true
-nextLocation = NodePath("../..")
+nextLocation = NodePath("../../..")
+
+[node name="Fireplace" parent="NavigationManager/Location0/Sub-Locations" instance=ExtResource("2_lmtjt")]
+locName = "Fireplace"
+locDesc = "You stand by the open fire pit to warm up.  The fire crackles.  You nearly choke on the smoky fire, but it is beautiful nonetheless."
+
+[node name="AnimationPlayer" parent="NavigationManager/Location0/Sub-Locations/Fireplace" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_k0vev")
+}
+
+[node name="ActionE" parent="NavigationManager/Location0/Sub-Locations/Fireplace" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+actionName = "Return"
+playAnimation = true
+animationName = "return"
+changeLocation = true
+nextLocation = NodePath("../../..")
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0" index="1"]
 libraries = {
@@ -161,7 +270,14 @@ nextLocation = NodePath("../../Location1")
 [node name="ActionE" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Look Around"
 changeLocation = true
-nextLocation = NodePath("../LookAround")
+nextLocation = NodePath("../Sub-Locations/LookAround")
+
+[node name="Action1" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+actionName = "Stand by the fireplace"
+playAnimation = true
+animationName = "fireplace"
+changeLocation = true
+nextLocation = NodePath("../Sub-Locations/Fireplace")
 
 [node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Stairway"
@@ -249,4 +365,5 @@ hgfjhfh
 "
 
 [editable path="NavigationManager/Location0"]
+[editable path="NavigationManager/Location0/Sub-Locations/Fireplace"]
 [editable path="NavigationManager/Location1"]

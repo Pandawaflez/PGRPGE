@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=13 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
+[ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://TestScene/ui_manager.gd" id="6_lmtjt"]
 
 [sub_resource type="Animation" id="Animation_lmtjt"]
 length = 0.001
@@ -212,6 +213,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("6_lmtjt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI Manager"]
 

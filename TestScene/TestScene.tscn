@@ -137,7 +137,6 @@ locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0" index="0"]
-reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_rtsy5")
 }
@@ -157,7 +156,6 @@ locName = "Longhouse Stairway"
 locDesc = "You stand at the stairway of the longhouse"
 
 [node name="AnimationPlayer" parent="NavigationManager/Location1" index="0"]
-reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_5obu0")
 }

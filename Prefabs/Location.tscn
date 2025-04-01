@@ -6,3 +6,4 @@
 script = ExtResource("1_sx3c7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false

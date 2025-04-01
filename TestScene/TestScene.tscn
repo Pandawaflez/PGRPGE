@@ -136,7 +136,16 @@ currentLocation = NodePath("Location0")
 locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
 
-[node name="AnimationPlayer" parent="NavigationManager/Location0" index="0"]
+[node name="LookAround" parent="NavigationManager/Location0" instance=ExtResource("2_lmtjt")]
+locName = "Longhouse Main Room"
+locDesc = "You are in a small, rundown longhouse.  The floor is made of packed dirt and small stones.  There is a roaring fire in the center, and stairs going to an attic and basement."
+
+[node name="ActionE" parent="NavigationManager/Location0/LookAround" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../..")
+
+[node name="AnimationPlayer" parent="NavigationManager/Location0" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_rtsy5")
 }
@@ -148,8 +157,10 @@ animationName = "animationW"
 changeLocation = true
 nextLocation = NodePath("../../Location1")
 
-[node name="ActionE" parent="NavigationManager/Location0" instance=ExtResource("4_lmtjt")]
+[node name="ActionE" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Look Around"
+changeLocation = true
+nextLocation = NodePath("../LookAround")
 
 [node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Stairway"

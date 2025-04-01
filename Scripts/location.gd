@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var animationPlayer = $AnimationPlayer
 @export var locName := "Location Name" 
-@export_multiline var locDesc := "Location Description"
+@export_multiline var locDesc := "LocDesc"
 
 @export var basePosX:float
 @export var basePosY:float

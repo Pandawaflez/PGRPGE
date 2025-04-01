@@ -4,6 +4,7 @@ extends Node2D
 @export var currentLocation:Location
 @export var uIManager:UIManager
 @export var playerSprite:Sprite2D
+@export var sceneManager:SceneManager
 var currentLocationData:LocationData
 
 @export var actionsAllowed:bool = true
@@ -178,3 +179,6 @@ func changeLocation( loc:Location ):
 
 func getCurrentLocation():
 	return currentLocation
+
+func changeScene ( sceneName:String ):
+	sceneManager.changeScene( sceneName , get_parent().get_parent() )

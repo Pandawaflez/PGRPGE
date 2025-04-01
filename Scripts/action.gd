@@ -10,6 +10,8 @@ extends Node2D
 @export var animationName := ""
 @export var changeLocation:bool = false
 @export var nextLocation:Location
+@export var changeScene:bool = false
+@export var sceneName:String = ""
 
 func getName():
 	return actionName

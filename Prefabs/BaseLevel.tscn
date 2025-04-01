@@ -13,6 +13,7 @@ playerSprite = NodePath("../Tilemap/PlayerSprite")
 [node name="Tilemap" parent="." instance=ExtResource("2_8iie0")]
 position = Vector2(-64, 64)
 
-[node name="UI Manager" parent="." instance=ExtResource("4_bjw3f")]
+[node name="UI Manager" parent="." node_paths=PackedStringArray("navigationManager") instance=ExtResource("4_bjw3f")]
+navigationManager = NodePath("../NavigationManager")
 
 [editable path="Tilemap"]

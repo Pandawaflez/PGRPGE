@@ -222,14 +222,12 @@ _data = {
 [node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation", "uIManager", "playerSprite")]
 script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
-uIManager = NodePath("")
+uIManager = NodePath("../UI Manager")
 playerSprite = NodePath("../Tilemap/PlayerSprite")
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
-basePosX = 672.0
-basePosY = 416.0
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0" index="0"]
 libraries = {
@@ -327,7 +325,8 @@ texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)
 
-[node name="UI Manager" parent="." instance=ExtResource("6_ul202")]
+[node name="UI Manager" parent="." node_paths=PackedStringArray("navigationManager") instance=ExtResource("6_ul202")]
+navigationManager = NodePath("../NavigationManager")
 
 [editable path="NavigationManager/Location0"]
 [editable path="NavigationManager/Location0/Sub-Locations/Fireplace"]

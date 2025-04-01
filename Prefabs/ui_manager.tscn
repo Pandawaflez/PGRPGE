@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://TestScene/ui_manager.gd" id="1_8h12r"]
 
-[node name="UI Manager" type="Control" node_paths=PackedStringArray("locationDescriptionBox", "navigationManager")]
+[node name="UI Manager" type="Control" node_paths=PackedStringArray("locationDescriptionBox")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_8h12r")
 locationDescriptionBox = NodePath("CanvasLayer/Control/ColorRect/RichTextLabel")
-navigationManager = NodePath("")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -74,6 +74,42 @@ func performLocationAction( input:String ):
 	if ( input == "d" ):
 		if ( currentLocation.actionD != null ):
 			print(currentLocation.actionD.actionName)
+	if ( input == "e" ):
+		if ( currentLocation.actionE != null ):
+			print(currentLocation.actionE.actionName)
+	if ( input == "q" ):
+		if ( currentLocation.actionQ != null ):
+			print(currentLocation.actionQ.actionName)
+	if ( input == "1" ):
+		if ( currentLocation.action1 != null ):
+			print(currentLocation.action1.actionName)
+	if ( input == "2" ):
+		if ( currentLocation.action2 != null ):
+			print(currentLocation.action2.actionName)
+	if ( input == "3" ):
+		if ( currentLocation.action3 != null ):
+			print(currentLocation.action3.actionName)
+	if ( input == "4" ):
+		if ( currentLocation.action4 != null ):
+			print(currentLocation.action4.actionName)
+	if ( input == "5" ):
+		if ( currentLocation.action5 != null ):
+			print(currentLocation.action5.actionName)
+	if ( input == "6" ):
+		if ( currentLocation.action6 != null ):
+			print(currentLocation.action6.actionName)
+	if ( input == "7" ):
+		if ( currentLocation.action7 != null ):
+			print(currentLocation.action7.actionName)
+	if ( input == "8" ):
+		if ( currentLocation.action8 != null ):
+			print(currentLocation.action8.actionName)
+	if ( input == "9" ):
+		if ( currentLocation.action9 != null ):
+			print(currentLocation.action9.actionName)
+	if ( input == "0" ):
+		if ( currentLocation.action0 != null ):
+			print(currentLocation.action0.actionName)
 # print current location and its data:
 func printLocationData():
 	# print name of location

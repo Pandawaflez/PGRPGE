@@ -168,6 +168,7 @@ changeLocation = true
 nextLocation = NodePath("../../Location0")
 
 [node name="Tilemap" type="Node2D" parent="."]
+position = Vector2(-64, 64)
 scale = Vector2(2, 2)
 
 [node name="Background" type="TileMapLayer" parent="Tilemap"]
@@ -203,22 +204,31 @@ offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI Manager"]
 
-[node name="ColorRect" type="ColorRect" parent="UI Manager/CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.9
-anchor_top = 0.533
-anchor_right = 0.9
-anchor_bottom = 0.533
-offset_left = -256.0
-offset_top = -727.52
-offset_right = 256.0
-offset_bottom = 680.48
+[node name="Control" type="Control" parent="UI Manager/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI Manager/CanvasLayer/ColorRect"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_right = 512.0
+[node name="ColorRect" type="ColorRect" parent="UI Manager/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 64.0
+anchor_right = 64.0
+offset_left = -576.0
+offset_top = 40.0
+offset_right = -64.0
 offset_bottom = 1408.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI Manager/CanvasLayer/Control/ColorRect"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 1408.0
+grow_horizontal = 0
 text = "sdjkflskdlkasdkfj
 hgfjhfh
 "

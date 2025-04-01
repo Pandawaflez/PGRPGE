@@ -5,8 +5,6 @@ var currentLocationData:LocationData
 
 @export var actionsAllowed:bool = true
 
-#@onready var animationPlayer = $Animation_Player
-
 func _ready():
 	# load location data:
 	#currentLocationData = currentLocation.locationData
@@ -152,6 +150,10 @@ func performAction( action:Action ):
 		#play animation:
 		if ( action.playAnimation ):
 			print("PlayingAnimation: " + action.animationName )
+			actionsAllowed = false
+			currentLocation.animationPlayer.play(action.animationName)
+			#while( actionsAllowed == false ):
+			#	pass
 		#moving:
 		if ( action.changeLocation ):
 			if ( action.nextLocation == null ):

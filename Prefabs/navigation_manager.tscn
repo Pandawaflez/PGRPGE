@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c02sqiop2pv4p"]
+
+[ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_iac1f"]
+
+[node name="NavigationManager" type="Node2D" node_paths=PackedStringArray("currentLocation")]
+script = ExtResource("1_iac1f")
+currentLocation = NodePath("")

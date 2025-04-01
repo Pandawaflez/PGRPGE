@@ -30,7 +30,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_tkqkb"]
@@ -57,7 +57,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtsy5"]
@@ -90,7 +90,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_hft80"]
@@ -117,7 +117,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5obu0"]
@@ -131,21 +131,19 @@ _data = {
 [node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation")]
 script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
+actionsAllowed = null
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0" index="0"]
-reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_rtsy5")
 }
 
 [node name="ActionW" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Go to the stairs"
-playAnimation = true
-animationName = "animationW"
 changeLocation = true
 nextLocation = NodePath("../../Location1")
 
@@ -157,7 +155,6 @@ locName = "Longhouse Stairway"
 locDesc = "You stand at the stairway of the longhouse"
 
 [node name="AnimationPlayer" parent="NavigationManager/Location1" index="0"]
-reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_5obu0")
 }
@@ -192,7 +189,7 @@ tile_map_data = PackedByteArray("AAAIAAEAAwAAABAAAAAIAAIAAwAAABEAAAAIAAMAAwAAABE
 tile_set = ExtResource("1_2g6we")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Tilemap"]
-position = Vector2(672, 416)
+position = Vector2(672, 160)
 texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)

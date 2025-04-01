@@ -5,6 +5,9 @@ extends Node2D
 @export var locName := "Location Name" 
 @export_multiline var locDesc := "Location Description"
 
+@export var basePosX:float
+@export var basePosY:float
+
 @onready var actionW:Action = $ActionW
 @onready var actionA:Action = $ActionA
 @onready var actionS:Action = $ActionS

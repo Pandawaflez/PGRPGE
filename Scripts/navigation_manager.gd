@@ -3,6 +3,7 @@ extends Node2D
 
 @export var currentLocation:Location
 @export var uIManager:UIManager
+@export var playerSprite:Sprite2D
 var currentLocationData:LocationData
 
 @export var actionsAllowed:bool = true
@@ -12,6 +13,7 @@ func _ready():
 	#currentLocationData = currentLocation.locationData
 	# print current location data to console:
 	printLocationData()
+	playerSprite.position = Vector2(currentLocation.basePosX , currentLocation.basePosY)
 
 func _input(event):
 	if event.is_action_pressed("w"):
@@ -161,6 +163,7 @@ func performAction( action:Action ):
 			else:
 				print("Changing Location to " + action.nextLocation.locName )
 				changeLocation( action.nextLocation )
+		# Update UI:
 		uIManager.setLocationData()
 	else:
 		print("Cannot Perform action, actions are not allowed at this time.")

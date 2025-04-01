@@ -2,7 +2,9 @@ class_name Location
 extends Node2D
 
 @onready var animationPlayer = $AnimationPlayer
-@export var locationData:LocationData
+#@export var locationData:LocationData
+@export var locName := "Location Name" 
+@export var locDesc := "Location Description"
 
 @onready var actionW:Action = $ActionW
 @onready var actionA:Action = $ActionA

@@ -166,12 +166,12 @@ func performAction( action:Action ):
 		# Update UI:
 		uIManager.setLocationData()
 	else:
-		print("Cannot Perform action, actions are not allowed at this time.")
+		print("Nav Manager cannot Perform action, actions are not allowed at this time.")
 
 
 func changeLocation( loc:Location ):
 	if ( loc == null ):
-		print( "We cannot change location, location does not exist." )
+		print( "Nav Manager cannot change location, location does not exist." )
 		return
 	currentLocation = loc
 	printLocationData()

@@ -5,7 +5,9 @@ extends Resource
 @export var testSceneAttic:String = "res://TestScene/locations/TestSceneLevel1Attic.tscn"
 @export var testSceneBasement:String = ""
 
-# Translate a scene nickname into a scene path
+@export var entrance:int = 0
+
+# Translates a scene nickname into a scene path
 # input: String, scene name
 # returns: String, scene path
 func getScene ( sceneName:String ) -> String:

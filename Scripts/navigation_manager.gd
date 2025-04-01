@@ -2,10 +2,10 @@ class_name NavigationManager
 extends Node2D
 
 @export var currentLocation:Location
+@export var sceneEntrances:Array[Location]
 @export var uIManager:UIManager
 @export var playerSprite:Sprite2D
 @export var sceneManager:SceneManager
-var currentLocationData:LocationData
 
 @export var actionsAllowed:bool = true
 

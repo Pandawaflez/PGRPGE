@@ -146,4 +146,13 @@ func performAction( action:Action ):
 		print( "Error: Cannot perform, action not found." )
 		return
 	print("Performing Action:" + action.actionName )
+	#play animation:
+	if ( action.playAnimation ):
+		print("PlayingAnimation: " + action.animationName )
+	#moving:
+	if ( action.changeLocation ):
+		if ( action.nextLocation == null ):
+			print("Next Location could not be found")
+		else:
+			print("Changing Location to " + action.nextLocation.locName )
 	

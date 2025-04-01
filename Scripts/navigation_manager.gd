@@ -181,4 +181,6 @@ func getCurrentLocation():
 	return currentLocation
 
 func changeScene ( sceneName:String ):
-	sceneManager.changeScene( sceneName , get_parent().get_parent() )
+	var scenePath:String = sceneManager.getScene(sceneName)
+	print("Loading Scene from path: " + scenePath )
+	get_tree().change_scene_to_file(scenePath)

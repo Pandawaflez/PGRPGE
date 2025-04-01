@@ -1,14 +1,16 @@
 class_name SceneManager
 extends Resource
 
-func changeScene ( sceneName:String , currentScene:Node2D ):
-	print("Changing Scene to: " + sceneName)
+@export var testScene0:String = "res://TestScene/locations/TestSceneLevel1.tscn"
+@export var testSceneAttic:String = "res://TestScene/locations/TestSceneLevel1Attic.tscn"
+@export var testSceneBasement:String = ""
+
+func getScene ( sceneName:String ) -> String:
 	match sceneName:
 		"testSceneLevel1":
-			pass
+			return testScene0
 		"testSceneLevel1Attic":
-			pass
+			return testSceneAttic
 		_:
-			print("Scene" + currentScene.name + "Not Found")
-			return
-	currentScene.free()
+			print("Scene" + sceneName + "Not Found")
+			return ""

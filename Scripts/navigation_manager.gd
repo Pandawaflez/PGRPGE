@@ -3,6 +3,8 @@ extends Node2D
 @export var currentLocation:Location
 var currentLocationData:LocationData
 
+@export var actionsAllowed:bool = true
+
 #@onready var animationPlayer = $Animation_Player
 
 func _ready():
@@ -99,8 +101,8 @@ func performLocationAction( input:String ):
 func printLocationData():
 	print("Location: ")
 	# print name of location
-	currentLocation.locName
-	currentLocation.locDesc
+	print(currentLocation.locName)
+	print(currentLocation.locDesc)
 	#print(currentLocationData.locationName)
 	# print names of the Actions:
 	print("Action Data: ")
@@ -142,17 +144,28 @@ func printAction( action:Action ):
 		print( action.actionName )
 
 func performAction( action:Action ):
-	if ( action == null ):
-		print( "Error: Cannot perform, action not found." )
+	if ( actionsAllowed ):
+		if ( action == null ):
+			print( "Error: Cannot perform, action not found." )
+			return
+		print("Performing Action: " + action.actionName )
+		#play animation:
+		if ( action.playAnimation ):
+			print("PlayingAnimation: " + action.animationName )
+		#moving:
+		if ( action.changeLocation ):
+			if ( action.nextLocation == null ):
+				print("Next Location could not be found")
+			else:
+				print("Changing Location to " + action.nextLocation.locName )
+				changeLocation( action.nextLocation )
+	else:
+		print("Cannot Perform action, actions are not allowed at this time.")
+
+
+func changeLocation( loc:Location ):
+	if ( loc == null ):
+		print( "We cannot change location, location does not exist." )
 		return
-	print("Performing Action:" + action.actionName )
-	#play animation:
-	if ( action.playAnimation ):
-		print("PlayingAnimation: " + action.animationName )
-	#moving:
-	if ( action.changeLocation ):
-		if ( action.nextLocation == null ):
-			print("Next Location could not be found")
-		else:
-			print("Changing Location to " + action.nextLocation.locName )
-	
+	currentLocation = loc
+	printLocationData()

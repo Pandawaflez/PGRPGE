@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
+window/size/initial_position=Vector2i(100, 100)
 window/stretch/scale=0.5
 
 [input]

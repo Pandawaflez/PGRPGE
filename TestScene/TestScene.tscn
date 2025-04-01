@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=6 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
+[ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -12,14 +13,25 @@ script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+locName = "Longhouse Enterence"
+locDesc = "You stand at the door of the longhouse"
 
-[node name="ActionW" parent="NavigationManager/Location0" instance=ExtResource("4_lmtjt")]
-actionName = "Go To Location 2"
+[node name="ActionW" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+actionName = "Go to the stairs"
+changeLocation = true
+nextLocation = NodePath("../../Location1")
 
 [node name="ActionE" parent="NavigationManager/Location0" instance=ExtResource("4_lmtjt")]
-actionName = "Examine Location"
+actionName = "Look Around"
 
 [node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+locName = "Longhouse Stairway"
+locDesc = "You stand at the stairway of the longhouse"
+
+[node name="ActionS" parent="NavigationManager/Location1" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+actionName = "Return to the Enterence"
+changeLocation = true
+nextLocation = NodePath("../../Location0")
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -29,14 +41,22 @@ tile_map_data = PackedByteArray("AAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAA
 tile_set = ExtResource("1_2g6we")
 
 [node name="Floor" type="TileMapLayer" parent="Tilemap"]
-modulate = Color(1, 1, 1, 0.466667)
+modulate = Color(1, 1, 1, 0.298039)
 tile_map_data = PackedByteArray("AAAJAAMAAwACAAAAAAAJAAQAAwACAAAAAAAJAAUAAwACAAAAAAAJAAYAAwACAAAAAAAKAAIAAwACAAAAAAAKAAMAAwACAAAAAAAKAAQAAwACAAAAAAAKAAUAAwACAAAAAAAKAAYAAwACAAAAAAALAAMAAwACAAAAAAALAAQAAwACAAAAAAALAAUAAwACAAAAAAALAAYAAwACAAAAAAA=")
 tile_set = ExtResource("1_2g6we")
 
 [node name="Midground" type="TileMapLayer" parent="Tilemap"]
+modulate = Color(1, 1, 1, 0.941176)
 tile_map_data = PackedByteArray("AAAJAAIAAwACAAYAAAAKAAQAAwAOAAoAAAAKAAcAAwABABIAAAAKAAgAAwADAAkAAAALAAIAAwADAAYAAAA=")
 tile_set = ExtResource("1_2g6we")
 
 [node name="Foreground" type="TileMapLayer" parent="Tilemap"]
+modulate = Color(1, 1, 1, 0.941176)
 tile_map_data = PackedByteArray("AAAIAAEAAwAAABAAAAAIAAIAAwAAABEAAAAIAAMAAwAAABEAAAAIAAQAAwAAABEAAAAIAAUAAwAAABEAAAAIAAYAAwAAABEAAAAIAAcAAwAAABIAAAAIAAgAAwAGAA0AAAAJAAEAAwABABAAAAAJAAcAAwABABIAAAAJAAgAAwAHAA0AAAAKAAEAAwABABAAAAALAAEAAwABABAAAAALAAcAAwABABIAAAALAAgAAwAHAA0AAAAMAAEAAwACABAAAAAMAAIAAwACABEAAAAMAAMAAwACABEAAAAMAAQAAwACABEAAAAMAAUAAwACABEAAAAMAAYAAwACABEAAAAMAAcAAwACABIAAAAMAAgAAwAGAA0AAAA=")
 tile_set = ExtResource("1_2g6we")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Tilemap"]
+position = Vector2(672, 416)
+texture = ExtResource("5_tkqkb")
+region_enabled = true
+region_rect = Rect2(1600, 0, 64, 64)

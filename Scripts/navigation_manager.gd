@@ -1,3 +1,4 @@
+class_name NavigationManager
 extends Node2D
 
 @export var currentLocation:Location
@@ -171,3 +172,6 @@ func changeLocation( loc:Location ):
 		return
 	currentLocation = loc
 	printLocationData()
+
+func getCurrentLocation():
+	return currentLocation

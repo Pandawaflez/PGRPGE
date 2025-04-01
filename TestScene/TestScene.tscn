@@ -208,12 +208,14 @@ texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)
 
-[node name="UI Manager" type="Control" parent="."]
+[node name="UI Manager" type="Control" parent="." node_paths=PackedStringArray("locationDescriptionBox", "navigationManager")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_lmtjt")
+locationDescriptionBox = NodePath("CanvasLayer/Control/ColorRect/RichTextLabel")
+navigationManager = NodePath("../NavigationManager")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI Manager"]
 

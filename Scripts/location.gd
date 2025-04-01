@@ -2,7 +2,6 @@ class_name Location
 extends Node2D
 
 @onready var animationPlayer = $AnimationPlayer
-#@export var locationData:LocationData
 @export var locName := "Location Name" 
 @export_multiline var locDesc := "Location Description"
 
@@ -22,3 +21,39 @@ extends Node2D
 @onready var action8:Action = $Action8
 @onready var action9:Action = $Action9
 @onready var action0:Action = $Action0
+
+func getAction( action:String ) -> Action:
+	if ( action == "w" ):
+		return actionW
+	if ( action == "a" ):
+		return actionA
+	if ( action == "s" ):
+		return actionS
+	if ( action == "d" ):
+		return actionD
+	if ( action == "e" ):
+		return actionE
+	if ( action == "q" ):
+		return actionQ
+	if ( action == "1" ):
+		return action1
+	if ( action == "2" ):
+		return action2
+	if ( action == "3" ):
+		return action3
+	if ( action == "4" ):
+		return action4
+	if ( action == "5" ):
+		return action5
+	if ( action == "6" ):
+		return action6
+	if ( action == "7" ):
+		return action7
+	if ( action == "8" ):
+		return action8
+	if ( action == "9" ):
+		return action9
+	if ( action == "0" ):
+		return action0
+	print ( "Action value |" + action + "| not found." )
+	return null

@@ -4,6 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_osl6c"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="3_5lsq0"]
 
+[sub_resource type="Animation" id="Animation_kvsom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 96)]
+}
+
 [sub_resource type="Animation" id="Animation_5lsq0"]
 resource_name = "downstairs"
 length = 0.2
@@ -34,21 +49,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_kvsom"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(672, 96)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sppbm"]
 _data = {
 &"RESET": SubResource("Animation_kvsom"),
@@ -59,8 +59,9 @@ _data = {
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_rbkhl")]
 
-[node name="NavigationManager" parent="BaseLevel" index="0" node_paths=PackedStringArray("currentLocation")]
+[node name="NavigationManager" parent="BaseLevel" index="0" node_paths=PackedStringArray("currentLocation", "sceneEntrances")]
 currentLocation = NodePath("Location0")
+sceneEntrances = [NodePath("Location0")]
 
 [node name="Location0" parent="BaseLevel/NavigationManager" index="0" instance=ExtResource("2_osl6c")]
 position = Vector2(1167.56, 495.656)
@@ -76,6 +77,8 @@ libraries = {
 [node name="ActionA" parent="BaseLevel/NavigationManager/Location0" instance=ExtResource("3_5lsq0")]
 playAnimation = true
 animationName = "downstairs"
+changeScene = true
+nextSceneEntrance = 1
 
 [node name="Tilemap" parent="BaseLevel" index="1"]
 position = Vector2(-64, 512)

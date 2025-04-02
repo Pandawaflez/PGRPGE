@@ -32,7 +32,7 @@ func constructLocationString():
 	if (currLoc.actionW != null ):
 		locStr += "W: " + currLoc.getAction("w").getName() + "\n"
 	if (currLoc.actionA != null ):
-		locStr += "A: " + currLoc.getAction("a").getName() + "\n"#
+		locStr += "A: " + currLoc.getAction("a").getName() + "\n"
 	if (currLoc.actionS != null ):
 		locStr += "S: " + currLoc.getAction("s").getName() + "\n"
 	if (currLoc.actionD != null ):

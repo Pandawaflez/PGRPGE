@@ -10,8 +10,10 @@ extends Node2D
 @export var actionsAllowed:bool = true
 
 func _ready():
-	# load location data:
-	#currentLocationData = currentLocation.locationData
+	# set Location to enterance:
+	var entranceIndex := sceneManager.entrance
+	if ( sceneEntrances[entranceIndex] != null ):
+		currentLocation = sceneEntrances[entranceIndex]
 	# print current location data to console:
 	printLocationData()
 	playerSprite.position = Vector2(currentLocation.basePosX , currentLocation.basePosY)
@@ -164,6 +166,8 @@ func performAction( action:Action ):
 			else:
 				print("Changing Location to " + action.nextLocation.locName )
 				changeLocation( action.nextLocation )
+		if ( action.changeScene ):
+			sceneManager.entrance = action.nextSceneEntrance
 		# Update UI:
 		uIManager.setLocationData()
 	else:

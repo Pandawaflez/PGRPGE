@@ -1,6 +1,8 @@
 class_name ProgressionManagement
 extends Resource
 
+@export var testValue:int = 0
+
 # Check if the value from a given data source is the same as a particular int
 # input:
 #	value we want to compare
@@ -26,3 +28,6 @@ func checkProgression( value:String , from:String , comparison:int ) -> bool:
 func getProgValue( value:String ) -> int :
 	print("Note: this is a skeleton, you will need to write a subclass to make this functional.")
 	return 0
+
+func setValue( value: String , new:int ):
+	print("Setting Value" + value + "in Prog Manager to:" + str(new) ) 

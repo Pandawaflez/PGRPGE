@@ -13,7 +13,7 @@ func _ready():
 	# set Location to enterance:
 	var entranceIndex := sceneManager.entrance
 	if ( sceneEntrances[entranceIndex] != null ):
-		currentLocation = sceneEntrances[entranceIndex]
+		changeLocation(sceneEntrances[entranceIndex])
 	# print current location data to console:
 	printLocationData()
 	playerSprite.position = Vector2(currentLocation.basePosX , currentLocation.basePosY)
@@ -152,6 +152,7 @@ func performAction( action:Action ):
 	if ( actionsAllowed ):
 		if ( action == null ):
 			print( "Error: Cannot perform, action not found." )
+			print("Current Location: " + currentLocation.name )
 			return
 		print("Performing Action: " + action.actionName )
 		#play animation:
@@ -179,6 +180,8 @@ func changeLocation( loc:Location ):
 		print( "Nav Manager cannot change location, location does not exist." )
 		return
 	currentLocation = loc
+	if ( currentLocation.skipToNext ):
+		performAction(currentLocation.actionE)
 	printLocationData()
 
 func getCurrentLocation():

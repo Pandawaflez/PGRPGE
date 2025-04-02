@@ -6,6 +6,6 @@
 script = ExtResource("1_6je8u")
 testScene0 = "res://TestScene/locations/TestSceneLevel1.tscn"
 testSceneAttic = "res://TestScene/locations/TestSceneLevel1Attic.tscn"
-testSceneBasement = ""
+testSceneBasement = "res://TestScene/locations/testSceneLevel1Basement.tscn"
 entrance = 0
 metadata/_custom_type_script = "uid://clceuohjn7vgn"

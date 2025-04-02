@@ -8,6 +8,8 @@ extends Node2D
 @export var basePosX:float
 @export var basePosY:float
 
+@export var skipToNext:bool = false
+
 @onready var actionW:Action = $ActionW
 @onready var actionA:Action = $ActionA
 @onready var actionS:Action = $ActionS

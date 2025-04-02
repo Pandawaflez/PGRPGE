@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=20 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
@@ -185,33 +185,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_rtsy5"]
-resource_name = "animationS"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19746, 0.404685, 0.802861, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(672, 160), Vector2(672, 224), Vector2(736, 224), Vector2(736, 416), Vector2(672, 416)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:actionsAllowed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_c708p"]
 resource_name = "animationA"
 length = 0.2
@@ -242,10 +215,68 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_rtsy5"]
+resource_name = "animationS"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19746, 0.404685, 0.802861, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(672, 160), Vector2(672, 224), Vector2(736, 224), Vector2(736, 416), Vector2(672, 416)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:actionsAllowed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_52tav"]
+resource_name = "animationD"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Tilemap/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(672, 160), Vector2(736, 160)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["testSceneLevel1Basement"],
+"method": &"changeScene"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5obu0"]
 _data = {
 &"RESET": SubResource("Animation_hft80"),
 &"animationA": SubResource("Animation_c708p"),
+&"animationD": SubResource("Animation_52tav"),
 &"animationS": SubResource("Animation_rtsy5")
 }
 
@@ -337,6 +368,13 @@ playAnimation = true
 animationName = "animationA"
 changeScene = true
 
+[node name="ActionD" parent="NavigationManager/Location1" instance=ExtResource("4_lmtjt")]
+actionName = "Go downstairs"
+playAnimation = true
+animationName = "animationD"
+changeScene = true
+sceneName = "testSceneLevel1Basement"
+
 [node name="Tilemap" type="Node2D" parent="."]
 position = Vector2(-64, 64)
 scale = Vector2(2, 2)
@@ -361,7 +399,7 @@ tile_map_data = PackedByteArray("AAAIAAEAAwAAABAAAAAIAAIAAwAAABEAAAAIAAMAAwAAABE
 tile_set = ExtResource("1_2g6we")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Tilemap"]
-position = Vector2(672, 160)
+position = Vector2(736, 160)
 texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)

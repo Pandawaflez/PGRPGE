@@ -6,6 +6,7 @@ extends Node2D
 @export var uIManager:UIManager
 @export var playerSprite:Sprite2D
 @export var sceneManager:SceneManager
+@export var progressionManager:ProgressionManagement
 
 @export var actionsAllowed:bool = true
 

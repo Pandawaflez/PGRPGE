@@ -15,6 +15,7 @@ func checkProgression( value:String , from:String , comparison:int ) -> bool:
 	print("Checking if Progression value |" + str(value) + "| + |" + str(from) + "| is equal to |" + str(comparison) + "|")
 	var valueNum:int
 	if ( from == "progression" ):
+		print("value is from Progression")
 		valueNum = getProgValue(value)
 		if ( valueNum == comparison ):
 			return true
@@ -27,7 +28,18 @@ func checkProgression( value:String , from:String , comparison:int ) -> bool:
 
 func getProgValue( value:String ) -> int :
 	print("Note: this is a skeleton, you will need to write a subclass to make this functional.")
-	return 0
+	return testValue
 
-func setValue( value: String , new:int ):
-	print("Setting Value" + value + "in Prog Manager to:" + str(new) ) 
+func setValue( value:String , from:String , newVal:int ):
+	print("Setting Value" + value + "in" + from + "to:" + str(newVal) ) 
+	if ( from == "progression" ): 
+		setProgValue( value , newVal )
+	else:
+		print("Value not recognized by Progression Manager")
+
+func setProgValue( value:String , newVal: int ):
+	print("Setting Value" + value + "in Prog Manager to:" + str(newVal) )
+	if ( value == "testValue" ):
+		testValue = newVal
+	else:
+		print("Value" + value + "not recognized by Progression Manager")

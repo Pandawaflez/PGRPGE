@@ -18,6 +18,10 @@ func _ready():
 	# print current location data to console:
 	printLocationData()
 	playerSprite.position = Vector2(currentLocation.basePosX , currentLocation.basePosY)
+	# test:
+	var test = progressionManager.checkProgression( "chestQuest" , "progression" , 0 )
+	if (test):
+		print("Test sucessful")
 
 func _input(event):
 	if event.is_action_pressed("w"):
@@ -148,6 +152,8 @@ func printLocationData():
 func printAction( action:Action ):
 	if ( action != null ):
 		print( action.actionName )
+	else:
+		"Cannot print action, action not found"
 
 func performAction( action:Action ):
 	if ( actionsAllowed ):
@@ -175,7 +181,6 @@ func performAction( action:Action ):
 	else:
 		print("Nav Manager cannot Perform action, actions are not allowed at this time.")
 
-
 func changeLocation( loc:Location ):
 	if ( loc == null ):
 		print( "Nav Manager cannot change location, location does not exist." )
@@ -185,10 +190,10 @@ func changeLocation( loc:Location ):
 		performAction(currentLocation.actionE)
 	printLocationData()
 
-func getCurrentLocation():
-	return currentLocation
-
 func changeScene ( sceneName:String ):
 	var scenePath:String = sceneManager.getScene(sceneName)
 	print("Loading Scene from path: " + scenePath )
 	get_tree().change_scene_to_file(scenePath)
+
+func getCurrentLocation():
+	return currentLocation

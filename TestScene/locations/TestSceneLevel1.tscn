@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene load_steps=21 format=4 uid="uid://c7qhp0q77wx34"]
 
 [ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
 [ext_resource type="Resource" uid="uid://cwijjjiuao5wg" path="res://resources/sceneManager.tres" id="2_c708p"]
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
+[ext_resource type="Resource" uid="uid://ciev23k8wu78g" path="res://TestScene/testProgressionManager.tres" id="3_52tav"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
 [ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://Prefabs/ui_manager.tscn" id="6_ul202"]
@@ -289,6 +290,7 @@ sceneEntrances = [NodePath("Location0"), NodePath("Location1")]
 uIManager = NodePath("../UI Manager")
 playerSprite = NodePath("../Tilemap/PlayerSprite")
 sceneManager = ExtResource("2_c708p")
+progressionManager = ExtResource("3_52tav")
 
 [node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Enterence"

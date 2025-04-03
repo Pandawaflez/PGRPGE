@@ -13,6 +13,10 @@ extends Node2D
 @export var changeScene:bool = false
 @export var sceneName:String = ""
 @export var nextSceneEntrance:int = 0
+@export var alternateNextLocation:Location
+@export var checkValue:bool = false
+@export var valueName:String = "testValue"
+@export var valueFrom:String = "progression"
 
 func getName():
 	return actionName

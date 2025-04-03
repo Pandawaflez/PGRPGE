@@ -18,10 +18,6 @@ func _ready():
 	# print current location data to console:
 	printLocationData()
 	playerSprite.position = Vector2(currentLocation.basePosX , currentLocation.basePosY)
-	# test:
-	var test = progressionManager.checkProgression( "chestQuest" , "progression" , 0 )
-	if (test):
-		print("Test sucessful")
 
 func _input(event):
 	if event.is_action_pressed("w"):

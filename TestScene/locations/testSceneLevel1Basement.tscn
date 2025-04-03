@@ -222,7 +222,8 @@ _data = {
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_au642")]
 
-[node name="NavigationManager" parent="BaseLevel" index="0" node_paths=PackedStringArray("sceneEntrances")]
+[node name="NavigationManager" parent="BaseLevel" index="0" node_paths=PackedStringArray("currentLocation", "sceneEntrances")]
+currentLocation = NodePath("Entrance")
 sceneEntrances = [NodePath("Entrance")]
 
 [node name="Entrance" parent="BaseLevel/NavigationManager" index="0" instance=ExtResource("2_escgb")]
@@ -242,7 +243,8 @@ changeLocation = true
 nextLocation = NodePath("../../Basement0")
 
 [node name="Basement0" parent="BaseLevel/NavigationManager" index="1" instance=ExtResource("2_escgb")]
-locDesc = "LocDesc"
+locName = "Basement"
+locDesc = "The Basement of the longhouse is cavernous.  It is used for storage mainly, but there is supposed to be a guest bed hidden somewhere."
 basePosX = 0.0
 basePosY = 0.0
 
@@ -272,7 +274,7 @@ nextLocation = NodePath("../../Basement1")
 
 [node name="Look Around" parent="BaseLevel/NavigationManager/Basement0" instance=ExtResource("2_escgb")]
 locName = "Basement"
-locDesc = "You see a cavernous basement.  It seems like it is being used for storage.  The basement is very deep down, and held up by four large pillars.  A hooked chain hangs from the ceiling above you.  Who knows what is hiding in the storage!"
+locDesc = "You see a cavernous basement.  It seems like it is being used for storage.  The basement is very deep down, and held up by four large pillars.  A hooked chain hangs from the ceiling above you.  Who knows what is hiding in the storage..."
 basePosX = 608.0
 basePosY = 224.0
 
@@ -281,9 +283,61 @@ actionName = "Return"
 changeLocation = true
 nextLocation = NodePath("../..")
 
+[node name="Action1" parent="BaseLevel/NavigationManager/Basement0" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_8lmm2")]
+actionName = "Search the storage"
+changeLocation = true
+nextLocation = NodePath("SearchStorage1")
+alternateNextLocation = NodePath("SearchStorage2")
+checkValue = true
+valueName = "chestQuest"
+
+[node name="SearchStorage1" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
+locName = "Storage"
+locDesc = "You search the storage, but find nothing."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Basement0/Action1/SearchStorage1" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+setValue = true
+valueName = "chestQuest"
+valueTo = 1
+
+[node name="SearchStorage2" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
+skipToNext = true
+
+[node name="ActionE" parent="BaseLevel/NavigationManager/Basement0/Action1/SearchStorage2" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_8lmm2")]
+changeLocation = true
+nextLocation = NodePath("../../FindKey")
+alternateNextLocation = NodePath("../../SearchStorageN")
+checkValue = true
+valueName = "chestQuest"
+valueTo = 1
+
+[node name="FindKey" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
+locName = "Storage"
+locDesc = "You search the storage again.  Inside the cauldron, you find a small silver key."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Basement0/Action1/FindKey" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+setValue = true
+valueName = "chestQuest"
+valueTo = 2
+
+[node name="SearchStorageN" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
+locName = "Storage"
+locDesc = "You search the storage again, but find nothing of note."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Basement0/Action1/SearchStorageN" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+
 [node name="Basement1" parent="BaseLevel/NavigationManager" index="2" instance=ExtResource("2_escgb")]
 locName = "Basement Corner"
-locDesc = "You stand at the far end of the basement.  To your right is a small bed, to your right is a chest.  Who knows what it might contain..."
+locDesc = "You stand in the corner of the basement.  To your right is a small bed, to your right is a chest.  Who knows what it might contain..."
 basePosX = 608.0
 basePosY = 480.0
 

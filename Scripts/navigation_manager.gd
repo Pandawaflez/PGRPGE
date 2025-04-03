@@ -164,12 +164,19 @@ func performAction( action:Action ):
 			actionsAllowed = false
 			currentLocation.animationPlayer.play(action.animationName)
 		#moving:
-		if ( action.changeLocation ):
+		if ( action.checkValue ):
+			if (progressionManager.checkProgression( action.valueName, action.valueFrom , action.valueTo ) ):
+				changeLocation( action.nextLocation )
+			else:
+				changeLocation( action.alternateNextLocation )
+		elif ( action.changeLocation ):
 			if ( action.nextLocation == null ):
 				print("Next Location could not be found")
 			else:
 				print("Changing Location to " + action.nextLocation.locName )
 				changeLocation( action.nextLocation )
+		if ( action.setValue ):
+			progressionManager.setValue( action.valueName, action.valueFrom , action.valueTo )
 		if ( action.changeScene ):
 			sceneManager.entrance = action.nextSceneEntrance
 		# Update UI:

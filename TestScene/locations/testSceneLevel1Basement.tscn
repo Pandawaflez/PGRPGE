@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://bt5q8d8jibxmm"]
+[gd_scene load_steps=18 format=4 uid="uid://bt5q8d8jibxmm"]
 
 [ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://Prefabs/BaseLevel.tscn" id="1_au642"]
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_escgb"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="3_8lmm2"]
+[ext_resource type="Animation" uid="uid://32eso8j8fgvk" path="res://TestScene/Animations/searchCrates.res" id="4_8lmm2"]
 
 [sub_resource type="Animation" id="Animation_8lmm2"]
 length = 0.001
@@ -53,16 +54,26 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_shf5m"]
 _data = {
 &"RESET": SubResource("Animation_8lmm2"),
 &"animationE": SubResource("Animation_escgb")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpc1l"]
+_data = {
+&"searchCrates": ExtResource("4_8lmm2")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lmm2"]
+_data = {
+&"searchCrates": ExtResource("4_8lmm2")
 }
 
 [sub_resource type="Animation" id="Animation_lpfn0"]
@@ -114,10 +125,10 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_shf5m"]
@@ -149,12 +160,30 @@ tracks/1/keys = {
 "method": &"changeScene"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:actionsAllowed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0fb2s"]
 _data = {
 &"RESET": SubResource("Animation_lpfn0"),
 &"animationS": SubResource("Animation_0fb2s"),
-&"animationW": SubResource("Animation_shf5m")
+&"animationW": SubResource("Animation_shf5m"),
+&"searchCrates": ExtResource("4_8lmm2")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lpfn0"]
+_data = {
+&"searchCrates": ExtResource("4_8lmm2")
 }
 
 [sub_resource type="Animation" id="Animation_pbcgd"]
@@ -242,7 +271,41 @@ animationName = "animationE"
 changeLocation = true
 nextLocation = NodePath("../../Basement0")
 
-[node name="Basement0" parent="BaseLevel/NavigationManager" index="1" instance=ExtResource("2_escgb")]
+[node name="SearchStorage2" parent="BaseLevel/NavigationManager" index="1" instance=ExtResource("2_escgb")]
+skipToNext = true
+
+[node name="AnimationPlayer" parent="BaseLevel/NavigationManager/SearchStorage2" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_rpc1l")
+}
+
+[node name="ActionE" parent="BaseLevel/NavigationManager/SearchStorage2" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_8lmm2")]
+playAnimation = true
+changeLocation = true
+nextLocation = NodePath("../../Basement0/Action1/FindKey")
+alternateNextLocation = NodePath("../../Basement0/Action1/SearchStorageN")
+checkValue = true
+valueName = "chestQuest"
+valueTo = 1
+
+[node name="SearchStorage1" parent="BaseLevel/NavigationManager" index="2" instance=ExtResource("2_escgb")]
+locName = "Storage"
+locDesc = "You search the storage, but find nothing."
+
+[node name="AnimationPlayer" parent="BaseLevel/NavigationManager/SearchStorage1" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_8lmm2")
+}
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/SearchStorage1" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../Basement0")
+setValue = true
+valueName = "chestQuest"
+valueTo = 1
+
+[node name="Basement0" parent="BaseLevel/NavigationManager" index="3" instance=ExtResource("2_escgb")]
 locName = "Basement"
 locDesc = "The Basement of the longhouse is cavernous.  It is used for storage mainly, but there is supposed to be a guest bed hidden somewhere."
 basePosX = 0.0
@@ -285,41 +348,26 @@ nextLocation = NodePath("../..")
 
 [node name="Action1" parent="BaseLevel/NavigationManager/Basement0" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_8lmm2")]
 actionName = "Search the storage"
+playAnimation = true
+animationName = "searchCrates"
 changeLocation = true
-nextLocation = NodePath("SearchStorage1")
-alternateNextLocation = NodePath("SearchStorage2")
+nextLocation = NodePath("../../SearchStorage1")
+alternateNextLocation = NodePath("../../SearchStorage2")
 checkValue = true
 valueName = "chestQuest"
-
-[node name="SearchStorage1" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
-locName = "Storage"
-locDesc = "You search the storage, but find nothing."
-
-[node name="ActionQ" parent="BaseLevel/NavigationManager/Basement0/Action1/SearchStorage1" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
-actionName = "Return"
-changeLocation = true
-nextLocation = NodePath("../../..")
-setValue = true
-valueName = "chestQuest"
-valueTo = 1
-
-[node name="SearchStorage2" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
-skipToNext = true
-
-[node name="ActionE" parent="BaseLevel/NavigationManager/Basement0/Action1/SearchStorage2" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_8lmm2")]
-changeLocation = true
-nextLocation = NodePath("../../FindKey")
-alternateNextLocation = NodePath("../../SearchStorageN")
-checkValue = true
-valueName = "chestQuest"
-valueTo = 1
 
 [node name="FindKey" parent="BaseLevel/NavigationManager/Basement0/Action1" instance=ExtResource("2_escgb")]
 locName = "Storage"
 locDesc = "You search the storage again.  Inside the cauldron, you find a small silver key."
 
+[node name="AnimationPlayer" parent="BaseLevel/NavigationManager/Basement0/Action1/FindKey" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_lpfn0")
+}
+
 [node name="ActionQ" parent="BaseLevel/NavigationManager/Basement0/Action1/FindKey" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_8lmm2")]
 actionName = "Return"
+animationName = "searchCrates"
 changeLocation = true
 nextLocation = NodePath("../../..")
 setValue = true
@@ -335,7 +383,7 @@ actionName = "Return"
 changeLocation = true
 nextLocation = NodePath("../../..")
 
-[node name="Basement1" parent="BaseLevel/NavigationManager" index="2" instance=ExtResource("2_escgb")]
+[node name="Basement1" parent="BaseLevel/NavigationManager" index="4" instance=ExtResource("2_escgb")]
 locName = "Basement Corner"
 locDesc = "You stand in the corner of the basement.  To your right is a small bed, to your right is a chest.  Who knows what it might contain..."
 basePosX = 608.0
@@ -398,6 +446,9 @@ tile_map_data = PackedByteArray("AAAFAAQAAwADAAsAAAAFAAUAAwADAAwAAAAFAAYAAwADAA0
 
 [editable path="BaseLevel"]
 [editable path="BaseLevel/NavigationManager/Entrance"]
+[editable path="BaseLevel/NavigationManager/SearchStorage2"]
+[editable path="BaseLevel/NavigationManager/SearchStorage1"]
 [editable path="BaseLevel/NavigationManager/Basement0"]
+[editable path="BaseLevel/NavigationManager/Basement0/Action1/FindKey"]
 [editable path="BaseLevel/NavigationManager/Basement1"]
 [editable path="BaseLevel/Tilemap"]

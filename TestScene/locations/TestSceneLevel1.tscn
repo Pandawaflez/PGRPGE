@@ -57,10 +57,10 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_n61yy"]
@@ -85,10 +85,10 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtsy5"]
@@ -147,10 +147,10 @@ tracks/1/path = NodePath("../../..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k0vev"]
@@ -180,10 +180,10 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_c708p"]
@@ -215,6 +215,18 @@ tracks/1/keys = {
 "method": &"changeScene"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:actionsAllowed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_52tav"]
 resource_name = "animationD"
@@ -245,6 +257,18 @@ tracks/1/keys = {
 "method": &"changeScene"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:actionsAllowed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rtsy5"]
 resource_name = "animationS"
@@ -267,10 +291,10 @@ tracks/1/path = NodePath("..:actionsAllowed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5obu0"]
@@ -401,7 +425,7 @@ tile_map_data = PackedByteArray("AAAIAAEAAwAAABAAAAAIAAIAAwAAABEAAAAIAAMAAwAAABE
 tile_set = ExtResource("1_2g6we")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Tilemap"]
-position = Vector2(736, 160)
+position = Vector2(672, 160)
 texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)

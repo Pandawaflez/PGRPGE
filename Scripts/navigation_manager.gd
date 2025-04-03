@@ -161,7 +161,6 @@ func performAction( action:Action ):
 		#play animation:
 		if ( action.playAnimation ):
 			print("PlayingAnimation: " + action.animationName )
-			actionsAllowed = false
 			currentLocation.animationPlayer.play(action.animationName)
 		#moving:
 		if ( action.checkValue ):

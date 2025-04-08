@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://d21ovohp01jgn"]
+[gd_scene load_steps=8 format=4 uid="uid://d21ovohp01jgn"]
 
 [ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://Prefabs/BaseLevel.tscn" id="1_rbkhl"]
 [ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_osl6c"]
 [ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="3_5lsq0"]
+[ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="4_kvsom"]
 
 [sub_resource type="Animation" id="Animation_kvsom"]
 length = 0.001
@@ -75,10 +76,102 @@ libraries = {
 }
 
 [node name="ActionA" parent="BaseLevel/NavigationManager/Location0" instance=ExtResource("3_5lsq0")]
+actionName = "Go downstairs."
 playAnimation = true
 animationName = "downstairs"
 changeScene = true
 nextSceneEntrance = 1
+
+[node name="Action1" parent="BaseLevel/NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+position = Vector2(-1167.56, -495.656)
+actionName = "Sleep"
+changeLocation = true
+nextLocation = NodePath("Beds")
+
+[node name="Beds" parent="BaseLevel/NavigationManager/Location0/Action1" instance=ExtResource("2_osl6c")]
+locName = "Beds"
+locDesc = "These are not your beds.  Don't sleep in them."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Location0/Action1/Beds" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+
+[node name="Action2" parent="BaseLevel/NavigationManager/Location0" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Open chest."
+nextLocation = NodePath("Empty")
+alternateNextLocation = NodePath("Chestlocked")
+checkValue = true
+valueName = "chestQuest"
+valueTo = 3
+
+[node name="Chestlocked" parent="BaseLevel/NavigationManager/Location0/Action2" instance=ExtResource("2_osl6c")]
+locName = "Locked!"
+locDesc = "The chest is locked.  You need a key to open it, or maybe just try to pry it open."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Location0/Action2/Chestlocked" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+alternateNextLocation = NodePath("..")
+valueTo = 3
+
+[node name="Action1" parent="BaseLevel/NavigationManager/Location0/Action2/Chestlocked" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Unlock the chest"
+nextLocation = NodePath("../../Unlock")
+alternateNextLocation = NodePath("../../Unopened")
+checkValue = true
+valueName = "chestQuest"
+valueTo = 2
+
+[node name="Action2" parent="BaseLevel/NavigationManager/Location0/Action2/Chestlocked" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Pry open the chest."
+changeLocation = true
+nextLocation = NodePath("../../Unopened")
+
+[node name="Unopened" parent="BaseLevel/NavigationManager/Location0/Action2" instance=ExtResource("2_osl6c")]
+locName = "Chest unopened"
+locDesc = "You are unable to open the chest.  Try finding a key, or maybe getting stronger."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Location0/Action2/Unopened" node_paths=PackedStringArray("nextLocation", "alternateNextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
+alternateNextLocation = NodePath("../../Chestlocked")
+valueTo = 3
+
+[node name="Pry Open" parent="BaseLevel/NavigationManager/Location0/Action2" instance=ExtResource("2_osl6c")]
+locName = "Chest opened"
+locDesc = "You manage to pry open the chest."
+
+[node name="ActionE" parent="BaseLevel/NavigationManager/Location0/Action2/Pry Open" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Take the sword."
+changeLocation = true
+nextLocation = NodePath("../../..")
+setValue = true
+valueName = "chestQuest"
+valueTo = 3
+
+[node name="Unlock" parent="BaseLevel/NavigationManager/Location0/Action2" instance=ExtResource("2_osl6c")]
+locName = "Chest opened"
+locDesc = "You manage to unlock the chest."
+
+[node name="ActionE" parent="BaseLevel/NavigationManager/Location0/Action2/Unlock" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Take the sword."
+changeLocation = true
+nextLocation = NodePath("../../..")
+setValue = true
+valueName = "chestQuest"
+valueTo = 3
+
+[node name="Empty" parent="BaseLevel/NavigationManager/Location0/Action2" instance=ExtResource("2_osl6c")]
+locName = "Empty chest"
+locDesc = "The chest is empty."
+
+[node name="ActionQ" parent="BaseLevel/NavigationManager/Location0/Action2/Empty" node_paths=PackedStringArray("nextLocation") instance=ExtResource("3_5lsq0")]
+actionName = "Return"
+changeLocation = true
+nextLocation = NodePath("../../..")
 
 [node name="Tilemap" parent="BaseLevel" index="1"]
 position = Vector2(-64, 512)
@@ -90,13 +183,26 @@ tile_map_data = PackedByteArray("AAD8//v/AgAAAAAAAAD8//z/AgAAAAAAAAD8//3/AgAAAAA
 tile_map_data = PackedByteArray("AAAKAAIAAwAKABEAAAALAAEAAwAKABEAAAALAAIAAwAKABEAAAAKAAEAAwAKABEAAAAJAAIAAwAKABEAAAAJAAMAAwAKABEAAAAKAAMAAwAKABEAAAALAAMAAwAKABEAAAAJAAEAAwADAAYAAAA=")
 
 [node name="Midground" parent="BaseLevel/Tilemap" index="2"]
-tile_map_data = PackedByteArray("AAAJAAMAAwAAAAMAAAAKAAMAAwAAAAMAAAALAAMAAwAAAAMAAAAJAAIAAwAFAAgAAAALAAIAAwAFAAgAABALAAEAAwAIAAYAAAA=")
+tile_map_data = PackedByteArray("AAAJAAMAAwAAAAMAAAAKAAMAAwAAAAMAAAALAAMAAwAAAAMAAAAJAAIAAwAFAAgAAAALAAIAAwAFAAgAABA=")
 
 [node name="PlayerSprite" parent="BaseLevel/Tilemap" index="3"]
 position = Vector2(672, 96)
 
 [node name="Foreground" parent="BaseLevel/Tilemap" index="4"]
 tile_map_data = PackedByteArray("AAAIAAIAAwAAABEAAAAIAAEAAwAAABEAAAAIAAAAAwAAABAAAAAJAAAAAwABABAAAAAKAAAAAwABABAAAAALAAAAAwABABAAAAAMAAAAAwACABAAAAAMAAEAAwACABEAAAAMAAIAAwACABEAAAAIAAMAAwAAABEAAAAMAAMAAwACABEAAAA=")
+
+[node name="Chest" type="Sprite2D" parent="BaseLevel/Tilemap" index="5"]
+position = Vector2(736, 96)
+texture = ExtResource("4_kvsom")
+region_enabled = true
+region_rect = Rect2(512, 384, 64, 64)
+
+[node name="ChestOpen" type="Sprite2D" parent="BaseLevel/Tilemap" index="6"]
+visible = false
+position = Vector2(736, 96)
+texture = ExtResource("4_kvsom")
+region_enabled = true
+region_rect = Rect2(576, 384, 64, 64)
 
 [editable path="BaseLevel"]
 [editable path="BaseLevel/NavigationManager/Location0"]

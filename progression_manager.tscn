@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://b80jxlmpo2kqk"]
 
-[ext_resource type="Script" uid="uid://dq5mt1cvw0thc" path="res://progression_manager.gd" id="1_ne6it"]
+[ext_resource type="Script" uid="uid://5g8yba76m03g" path="res://RPGTestIdea/Scripts/progressionManagment.gd" id="1_ne6it"]
 
 [node name="ProgressionManager" type="Node2D" unique_id=185135515]
 script = ExtResource("1_ne6it")
+progressionDictionary = {
+"NewProgressionTest": 0,
+"ProgressionTest": false
+}

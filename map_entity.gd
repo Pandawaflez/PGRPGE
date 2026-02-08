@@ -1,6 +1,10 @@
 class_name MapEntity
 extends CharacterBody2D
 
+@export var progressionTriggerArray:Array[String] = []
+@export var progressionValueArray:Array[int] = []
+@export var progressionEffectArray:Array[String] = []
+
 const TILE_SIZE := 64
 const MOVE_TIME := 0.15
 
@@ -17,6 +21,17 @@ var facing: Direction = Direction.DOWN
 
 func _ready():
 	add_to_group("map_entities")
+
+func calculateProgressionTrigger() -> void:
+	var counter:int = 0
+	var counterCap:int = progressionTriggerArray.size()
+	if counterCap >= progressionEffectArray.size():
+		counterCap = progressionEffectArray.size()
+	if counterCap >= progressionValueArray.size():
+		counterCap = progressionValueArray.size()
+	while counter < counterCap:
+		pass
+	return
 
 func interact( _from: MapEntity ) -> void:
 	print("Entity interacted with.")
@@ -41,7 +56,7 @@ func try_move(distance: int, direction: Direction) -> bool:
 	tween.finished.connect(func():
 		is_moving = false
 	)
-
+	
 	return true
 
 func _direction_to_vector(direction: Direction) -> Vector2:

@@ -1,6 +1,6 @@
 Project in Godot 4.4 by Carson G
 
-Most of my old ideas for mechanics didn't really work, so I am restructuring this to build a new system.  Old files can be found in a new branch,
+Most of my old ideas for mechanics didn't really work, so I am restructuring this to build a new system.  Old files can be found in a new branch.
 
 The idea is essentially to create a set of generic systems that can be used to create just about any simple top-down rpg game I would want to create.
 

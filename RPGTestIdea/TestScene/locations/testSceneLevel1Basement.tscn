@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://bt5q8d8jibxmm"]
+[gd_scene format=4 uid="uid://bt5q8d8jibxmm"]
 
-[ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://Prefabs/BaseLevel.tscn" id="1_au642"]
-[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_escgb"]
-[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="3_8lmm2"]
-[ext_resource type="Animation" uid="uid://32eso8j8fgvk" path="res://TestScene/Animations/searchCrates.res" id="4_8lmm2"]
+[ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://RPGTestIdea/Prefabs/BaseLevel.tscn" id="1_au642"]
+[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://RPGTestIdea/Prefabs/Location.tscn" id="2_escgb"]
+[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://RPGTestIdea/Prefabs/Action.tscn" id="3_8lmm2"]
+[ext_resource type="Animation" uid="uid://32eso8j8fgvk" path="res://RPGTestIdea/TestScene/Animations/searchCrates.res" id="4_8lmm2"]
 
 [sub_resource type="Animation" id="Animation_8lmm2"]
 length = 0.001

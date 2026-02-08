@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TestProgressionManagement" format=3 uid="uid://ciev23k8wu78g"]
+
+[ext_resource type="Script" uid="uid://cr5e32d0t60j8" path="res://RPGTestIdea/TestScene/scripts/TestProgressionManagement.gd" id="1_d3bhg"]
+
+[resource]
+script = ExtResource("1_d3bhg")
+chestQuest = 0
+testValue = 0
+metadata/_custom_type_script = "uid://cr5e32d0t60j8"

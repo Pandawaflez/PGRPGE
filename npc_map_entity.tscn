@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://j2q0qvkmn11j"]
+
+[ext_resource type="PackedScene" uid="uid://bgpyctanat6fa" path="res://map_entity.tscn" id="1_cb0wr"]
+[ext_resource type="Script" uid="uid://dcuoqysnuusc8" path="res://npc_map_entity.gd" id="2_py2iv"]
+
+[node name="NPC" unique_id=1278548234 instance=ExtResource("1_cb0wr")]
+script = ExtResource("2_py2iv")
+isIdleMoving = false
+idleMovementScript = Array[int]([])
+idleMovementDelay = 1.0
+
+[node name="Sprite2D" parent="." index="1" unique_id=1904254392]
+region_rect = Rect2(1728, 64, 64, 64)
+
+[node name="IdleMovementTimer" type="Timer" parent="." index="2" unique_id=1182503002]
+
+[connection signal="timeout" from="IdleMovementTimer" to="." method="idleMovement"]

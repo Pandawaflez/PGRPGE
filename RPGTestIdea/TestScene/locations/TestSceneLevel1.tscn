@@ -1,13 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://c7qhp0q77wx34"]
+[gd_scene format=4 uid="uid://c7qhp0q77wx34"]
 
-[ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://Scripts/navigation_manager.gd" id="1_0xtca"]
+[ext_resource type="Script" uid="uid://cu8lxm0svdyd3" path="res://RPGTestIdea/Scripts/navigation_manager.gd" id="1_0xtca"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_2g6we"]
-[ext_resource type="Resource" uid="uid://cwijjjiuao5wg" path="res://resources/sceneManager.tres" id="2_c708p"]
-[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_lmtjt"]
-[ext_resource type="Resource" uid="uid://ciev23k8wu78g" path="res://TestScene/testProgressionManager.tres" id="3_52tav"]
-[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="4_lmtjt"]
+[ext_resource type="Resource" uid="uid://cwijjjiuao5wg" path="res://RPGTestIdea/resources/sceneManager.tres" id="2_c708p"]
+[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://RPGTestIdea/Prefabs/Location.tscn" id="2_lmtjt"]
+[ext_resource type="Resource" uid="uid://ciev23k8wu78g" path="res://RPGTestIdea/TestScene/testProgressionManager.tres" id="3_52tav"]
+[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://RPGTestIdea/Prefabs/Action.tscn" id="4_lmtjt"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="5_tkqkb"]
-[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://Prefabs/ui_manager.tscn" id="6_ul202"]
+[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://RPGTestIdea/Prefabs/ui_manager.tscn" id="6_ul202"]
 
 [sub_resource type="Animation" id="Animation_lmtjt"]
 length = 0.001
@@ -305,9 +305,9 @@ _data = {
 &"animationS": SubResource("Animation_rtsy5")
 }
 
-[node name="TestScene" type="Node2D"]
+[node name="TestScene" type="Node2D" unique_id=1384838402]
 
-[node name="NavigationManager" type="Node2D" parent="." node_paths=PackedStringArray("currentLocation", "sceneEntrances", "uIManager", "playerSprite")]
+[node name="NavigationManager" type="Node2D" parent="." unique_id=1706707445 node_paths=PackedStringArray("currentLocation", "sceneEntrances", "uIManager", "playerSprite")]
 script = ExtResource("1_0xtca")
 currentLocation = NodePath("Location0")
 sceneEntrances = [NodePath("Location0"), NodePath("Location1")]
@@ -316,121 +316,115 @@ playerSprite = NodePath("../Tilemap/PlayerSprite")
 sceneManager = ExtResource("2_c708p")
 progressionManager = ExtResource("3_52tav")
 
-[node name="Location0" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+[node name="Location0" parent="NavigationManager" unique_id=1122382900 instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Enterence"
 locDesc = "You stand at the door of the longhouse"
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_rtsy5")
-}
+libraries/ = SubResource("AnimationLibrary_rtsy5")
 
-[node name="Sub-Locations" type="Node2D" parent="NavigationManager/Location0"]
+[node name="Sub-Locations" type="Node2D" parent="NavigationManager/Location0" unique_id=347198991]
 
-[node name="LookAround" parent="NavigationManager/Location0/Sub-Locations" instance=ExtResource("2_lmtjt")]
+[node name="LookAround" parent="NavigationManager/Location0/Sub-Locations" unique_id=1136588468 instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Main Room"
 locDesc = "You are in a small, rundown longhouse.  The floor is made of packed dirt and small stones.  There is a roaring fire in the center, and stairs going to an attic and basement."
 
-[node name="ActionQ" parent="NavigationManager/Location0/Sub-Locations/LookAround" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionQ" parent="NavigationManager/Location0/Sub-Locations/LookAround" unique_id=1747825815 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Return"
 changeLocation = true
 nextLocation = NodePath("../../..")
 
-[node name="Fireplace" parent="NavigationManager/Location0/Sub-Locations" instance=ExtResource("2_lmtjt")]
+[node name="Fireplace" parent="NavigationManager/Location0/Sub-Locations" unique_id=1721655845 instance=ExtResource("2_lmtjt")]
 locName = "Fireplace"
 locDesc = "You stand by the open fire pit to warm up.  The fire crackles.  You nearly choke on the smoky fire, but it is beautiful nonetheless."
 
 [node name="AnimationPlayer" parent="NavigationManager/Location0/Sub-Locations/Fireplace" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_k0vev")
-}
+libraries/ = SubResource("AnimationLibrary_k0vev")
 
-[node name="ActionQ" parent="NavigationManager/Location0/Sub-Locations/Fireplace" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionQ" parent="NavigationManager/Location0/Sub-Locations/Fireplace" unique_id=941850277 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Return"
 playAnimation = true
 animationName = "return"
 changeLocation = true
 nextLocation = NodePath("../../..")
 
-[node name="ActionW" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionW" parent="NavigationManager/Location0" unique_id=1192846112 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Go to the stairs"
 playAnimation = true
 animationName = "animationW"
 changeLocation = true
 nextLocation = NodePath("../../Location1")
 
-[node name="ActionE" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionE" parent="NavigationManager/Location0" unique_id=312807463 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Look Around"
 changeLocation = true
 nextLocation = NodePath("../Sub-Locations/LookAround")
 
-[node name="Action1" parent="NavigationManager/Location0" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="Action1" parent="NavigationManager/Location0" unique_id=2073484315 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Stand by the fireplace"
 playAnimation = true
 animationName = "fireplace"
 changeLocation = true
 nextLocation = NodePath("../Sub-Locations/Fireplace")
 
-[node name="Location1" parent="NavigationManager" instance=ExtResource("2_lmtjt")]
+[node name="Location1" parent="NavigationManager" unique_id=498095638 instance=ExtResource("2_lmtjt")]
 locName = "Longhouse Stairway"
 locDesc = "You stand at the stairway of the longhouse"
 basePosY = 160.0
 
 [node name="AnimationPlayer" parent="NavigationManager/Location1" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_5obu0")
-}
+libraries/ = SubResource("AnimationLibrary_5obu0")
 
-[node name="ActionS" parent="NavigationManager/Location1" node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
+[node name="ActionS" parent="NavigationManager/Location1" unique_id=482815112 node_paths=PackedStringArray("nextLocation") instance=ExtResource("4_lmtjt")]
 actionName = "Go to the Entrance"
 playAnimation = true
 animationName = "animationS"
 changeLocation = true
 nextLocation = NodePath("../../Location0")
 
-[node name="ActionA" parent="NavigationManager/Location1" instance=ExtResource("4_lmtjt")]
+[node name="ActionA" parent="NavigationManager/Location1" unique_id=500864372 instance=ExtResource("4_lmtjt")]
 actionName = "Go upstairs"
 playAnimation = true
 animationName = "animationA"
 changeScene = true
 
-[node name="ActionD" parent="NavigationManager/Location1" instance=ExtResource("4_lmtjt")]
+[node name="ActionD" parent="NavigationManager/Location1" unique_id=1746648827 instance=ExtResource("4_lmtjt")]
 actionName = "Go downstairs"
 playAnimation = true
 animationName = "animationD"
 changeScene = true
 sceneName = "testSceneLevel1Basement"
 
-[node name="Tilemap" type="Node2D" parent="."]
+[node name="Tilemap" type="Node2D" parent="." unique_id=783729920]
 position = Vector2(-64, 64)
 scale = Vector2(2, 2)
 
-[node name="Background" type="TileMapLayer" parent="Tilemap"]
+[node name="Background" type="TileMapLayer" parent="Tilemap" unique_id=296815962]
 tile_map_data = PackedByteArray("AAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD//wIAAgAAAAAAAAD//wMAAgAAAAAAAAD//wQAAgAAAAAAAAD//wUAAgAAAAAAAAD//wYAAgAAAAAAAAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAYAAgAAAAAAAAABAP//AgAAAAAAAAABAAAAAgAAAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAABAAYAAgAAAAAAAAACAP//AgAAAAAAAAACAAAAAgAAAAAAAAACAAEAAgAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAACAAYAAgAAAAAAAAADAP//AgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAADAAMAAgAAAAAAAAADAAQAAgAAAAAAAAADAAUAAgAAAAAAAAADAAYAAgAAAAAAAAAEAP//AgAAAAAAAAAEAAAAAgAAAAAAAAAEAAEAAgAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAgAAAAAAAAAEAAQAAgAAAAAAAAAEAAUAAgAAAAAAAAAEAAYAAgAAAAAAAAAFAP//AgAAAAAAAAAFAAAAAgAAAAAAAAAFAAEAAgAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAgAAAAAAAAAFAAQAAgAAAAAAAAAFAAYAAgAAAAAAAAAGAP//AgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAAMAAgAAAAAAAAAGAAQAAgAAAAAAAAAGAAUAAgAAAAAAAAAGAAYAAgAAAAAAAAAHAP//AgAAAAAAAAAHAAAAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAMAAgAAAAAAAAAHAAQAAgAAAAAAAAAHAAUAAgAAAAAAAAAHAAYAAgAAAAAAAAAIAP//AgAAAAAAAAAIAAAAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAIAAgAAAAAAAAAIAAMAAgAAAAAAAAAIAAQAAgAAAAAAAAAIAAUAAgAAAAAAAAAIAAYAAgAAAAAAAAAJAP//AgAAAAAAAAAJAAAAAgAAAAAAAAAJAAEAAgAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAJAAQAAgAAAAAAAAAJAAUAAgAAAAAAAAAJAAYAAgAAAAAAAAD+//7/AgAAAAAAAAD+////AgAAAAAAAAD+/wAAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD+/wMAAgAAAAAAAAD+/wQAAgAAAAAAAAD+/wUAAgAAAAAAAAD+/wYAAgAAAAAAAAD+/wcAAgAAAAAAAAD+/wgAAgAAAAAAAAD///7/AgAAAAAAAAD//wcAAgAAAAAAAAD//wgAAgAAAAAAAAAAAP7/AgAAAAAAAAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAABAP7/AgAAAAAAAAABAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAP7/AgAAAAAAAAACAAcAAgAAAAAAAAACAAgAAgAAAAAAAAADAP7/AgAAAAAAAAADAAcAAgAAAAAAAAADAAgAAgAAAAAAAAAEAP7/AgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAP7/AgAAAAAAAAAFAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAAGAP7/AgAAAAAAAAAGAAcAAgAAAAAAAAAGAAgAAgAAAAAAAAAHAP7/AgAAAAAAAAAHAAcAAgAAAAAAAAAHAAgAAgAAAAAAAAAIAP7/AgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAJAP7/AgAAAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAKAP7/AgAAAAAAAAAKAP//AgAAAAAAAAAKAAAAAgAAAAAAAAAKAAEAAgAAAAAAAAAKAAIAAgAAAAAAAAAKAAMAAgAAAAAAAAAKAAQAAgAAAAAAAAAKAAUAAgAAAAAAAAAKAAYAAgAAAAAAAAAKAAcAAgAAAAAAAAAKAAgAAgAAAAAAAAAFAAUAAgAAAAAAAAD8//z/AgAAAAAAAAD8//3/AgAAAAAAAAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD8/wIAAgAAAAAAAAD8/wMAAgAAAAAAAAD8/wQAAgAAAAAAAAD8/wUAAgAAAAAAAAD8/wYAAgAAAAAAAAD8/wcAAgAAAAAAAAD8/wgAAgAAAAAAAAD8/wkAAgAAAAAAAAD8/woAAgAAAAAAAAD8/wsAAgAAAAAAAAD9//z/AgAAAAAAAAD9//3/AgAAAAAAAAD9//7/AgAAAAAAAAD9////AgAAAAAAAAD9/wAAAgAAAAAAAAD9/wEAAgAAAAAAAAD9/wIAAgAAAAAAAAD9/wMAAgAAAAAAAAD9/wQAAgAAAAAAAAD9/wUAAgAAAAAAAAD9/wYAAgAAAAAAAAD9/wcAAgAAAAAAAAD9/wgAAgAAAAAAAAD9/wkAAgAAAAAAAAD9/woAAgAAAAAAAAD9/wsAAgAAAAAAAAD+//z/AgAAAAAAAAD+//3/AgAAAAAAAAD+/wkAAgAAAAAAAAD+/woAAgAAAAAAAAD+/wsAAgAAAAAAAAD///z/AgAAAAAAAAD///3/AgAAAAAAAAD//wkAAgAAAAAAAAD//woAAgAAAAAAAAD//wsAAgAAAAAAAAAAAPz/AgAAAAAAAAAAAP3/AgAAAAAAAAAAAAkAAgAAAAAAAAAAAAoAAgAAAAAAAAAAAAsAAgAAAAAAAAABAPz/AgAAAAAAAAABAP3/AgAAAAAAAAABAAkAAgAAAAAAAAABAAoAAgAAAAAAAAABAAsAAgAAAAAAAAACAPz/AgAAAAAAAAACAP3/AgAAAAAAAAACAAkAAgAAAAAAAAACAAoAAgAAAAAAAAACAAsAAgAAAAAAAAADAPz/AgAAAAAAAAADAP3/AgAAAAAAAAADAAkAAgAAAAAAAAADAAoAAgAAAAAAAAADAAsAAgAAAAAAAAAEAPz/AgAAAAAAAAAEAP3/AgAAAAAAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAEAAsAAgAAAAAAAAAFAPz/AgAAAAAAAAAFAP3/AgAAAAAAAAAFAAkAAgAAAAAAAAAFAAoAAgAAAAAAAAAFAAsAAgAAAAAAAAAGAPz/AgAAAAAAAAAGAP3/AgAAAAAAAAAGAAkAAgAAAAAAAAAGAAoAAgAAAAAAAAAGAAsAAgAAAAAAAAAHAPz/AgAAAAAAAAAHAP3/AgAAAAAAAAAHAAkAAgAAAAAAAAAHAAoAAgAAAAAAAAAHAAsAAgAAAAAAAAAIAPz/AgAAAAAAAAAIAP3/AgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAIAAsAAgAAAAAAAAAJAPz/AgAAAAAAAAAJAP3/AgAAAAAAAAAJAAkAAgAAAAAAAAAJAAoAAgAAAAAAAAAJAAsAAgAAAAAAAAAKAPz/AgAAAAAAAAAKAP3/AgAAAAAAAAAKAAkAAgAAAAAAAAAKAAoAAgAAAAAAAAAKAAsAAgAAAAAAAAALAPz/AgAAAAAAAAALAP3/AgAAAAAAAAALAP7/AgAAAAAAAAALAP//AgAAAAAAAAALAAAAAgAAAAAAAAALAAEAAgAAAAAAAAALAAIAAgAAAAAAAAALAAMAAgAAAAAAAAALAAQAAgAAAAAAAAALAAUAAgAAAAAAAAALAAYAAgAAAAAAAAALAAcAAgAAAAAAAAALAAgAAgAAAAAAAAALAAkAAgAAAAAAAAALAAoAAgAAAAAAAAALAAsAAgAAAAAAAAAMAPz/AgAAAAAAAAAMAP3/AgAAAAAAAAAMAP7/AgAAAAAAAAAMAP//AgAAAAAAAAAMAAAAAgAAAAAAAAAMAAEAAgAAAAAAAAAMAAIAAgAAAAAAAAAMAAMAAgAAAAAAAAAMAAQAAgAAAAAAAAAMAAUAAgAAAAAAAAAMAAYAAgAAAAAAAAAMAAcAAgAAAAAAAAAMAAgAAgAAAAAAAAAMAAkAAgAAAAAAAAAMAAoAAgAAAAAAAAAMAAsAAgAAAAAAAAANAPz/AgAAAAAAAAANAP3/AgAAAAAAAAANAP7/AgAAAAAAAAANAP//AgAAAAAAAAANAAAAAgAAAAAAAAANAAEAAgAAAAAAAAANAAIAAgAAAAAAAAANAAMAAgAAAAAAAAANAAQAAgAAAAAAAAANAAUAAgAAAAAAAAANAAYAAgAAAAAAAAANAAcAAgAAAAAAAAANAAgAAgAAAAAAAAANAAkAAgAAAAAAAAANAAoAAgAAAAAAAAANAAsAAgAAAAAAAAAOAPz/AgAAAAAAAAAOAP3/AgAAAAAAAAAOAP7/AgAAAAAAAAAOAP//AgAAAAAAAAAOAAAAAgAAAAAAAAAOAAEAAgAAAAAAAAAOAAIAAgAAAAAAAAAOAAMAAgAAAAAAAAAOAAQAAgAAAAAAAAAOAAUAAgAAAAAAAAAOAAYAAgAAAAAAAAAOAAcAAgAAAAAAAAAOAAgAAgAAAAAAAAAOAAkAAgAAAAAAAAAOAAoAAgAAAAAAAAAOAAsAAgAAAAAAAAD7//z/AgAAAAAAAAD7//3/AgAAAAAAAAD7//7/AgAAAAAAAAD7////AgAAAAAAAAD7/wAAAgAAAAAAAAD7/wEAAgAAAAAAAAD7/wIAAgAAAAAAAAD7/wMAAgAAAAAAAAD7/wQAAgAAAAAAAAD7/wUAAgAAAAAAAAD7/wYAAgAAAAAAAAD7/wcAAgAAAAAAAAD7/wgAAgAAAAAAAAD7/wkAAgAAAAAAAAD7/woAAgAAAAAAAAD7/wsAAgAAAAAAAAD7/wwAAgAAAAAAAAD7/w0AAgAAAAAAAAD8/wwAAgAAAAAAAAD8/w0AAgAAAAAAAAD9/wwAAgAAAAAAAAD9/w0AAgAAAAAAAAD+/wwAAgAAAAAAAAD+/w0AAgAAAAAAAAD//wwAAgAAAAAAAAD//w0AAgAAAAAAAAAAAAwAAgAAAAAAAAAAAA0AAgAAAAAAAAABAAwAAgAAAAAAAAABAA0AAgAAAAAAAAACAAwAAgAAAAAAAAACAA0AAgAAAAAAAAADAAwAAgAAAAAAAAADAA0AAgAAAAAAAAAEAAwAAgAAAAAAAAAEAA0AAgAAAAAAAAAFAAwAAgAAAAAAAAAFAA0AAgAAAAAAAAAGAAwAAgAAAAAAAAAGAA0AAgAAAAAAAAAHAAwAAgAAAAAAAAAHAA0AAgAAAAAAAAAIAAwAAgAAAAAAAAAIAA0AAgAAAAAAAAAJAAwAAgAAAAAAAAAJAA0AAgAAAAAAAAAKAAwAAgAAAAAAAAAKAA0AAgAAAAAAAAALAAwAAgAAAAAAAAALAA0AAgAAAAAAAAAMAAwAAgAAAAAAAAAMAA0AAgAAAAAAAAANAAwAAgAAAAAAAAANAA0AAgAAAAAAAAAOAAwAAgAAAAAAAAAOAA0AAgAAAAAAAAAPAPz/AgAAAAAAAAAPAP3/AgAAAAAAAAAPAP7/AgAAAAAAAAAPAP//AgAAAAAAAAAPAAAAAgAAAAAAAAAPAAEAAgAAAAAAAAAPAAIAAgAAAAAAAAAPAAMAAgAAAAAAAAAPAAQAAgAAAAAAAAAPAAUAAgAAAAAAAAAPAAYAAgAAAAAAAAAPAAcAAgAAAAAAAAAPAAgAAgAAAAAAAAAPAAkAAgAAAAAAAAAPAAoAAgAAAAAAAAAPAAsAAgAAAAAAAAAPAAwAAgAAAAAAAAAPAA0AAgAAAAAAAAAQAPz/AgAAAAAAAAAQAP3/AgAAAAAAAAAQAP7/AgAAAAAAAAAQAP//AgAAAAAAAAAQAAAAAgAAAAAAAAAQAAEAAgAAAAAAAAAQAAIAAgAAAAAAAAAQAAMAAgAAAAAAAAAQAAQAAgAAAAAAAAAQAAUAAgAAAAAAAAAQAAYAAgAAAAAAAAAQAAcAAgAAAAAAAAAQAAgAAgAAAAAAAAAQAAkAAgAAAAAAAAAQAAoAAgAAAAAAAAAQAAsAAgAAAAAAAAAQAAwAAgAAAAAAAAAQAA0AAgAAAAAAAAARAPz/AgAAAAAAAAARAP3/AgAAAAAAAAARAP7/AgAAAAAAAAARAP//AgAAAAAAAAARAAAAAgAAAAAAAAARAAEAAgAAAAAAAAARAAIAAgAAAAAAAAARAAMAAgAAAAAAAAARAAQAAgAAAAAAAAARAAUAAgAAAAAAAAARAAYAAgAAAAAAAAARAAcAAgAAAAAAAAARAAgAAgAAAAAAAAARAAkAAgAAAAAAAAARAAoAAgAAAAAAAAARAAsAAgAAAAAAAAARAAwAAgAAAAAAAAARAA0AAgAAAAAAAAASAPz/AgAAAAAAAAASAP3/AgAAAAAAAAASAP7/AgAAAAAAAAASAP//AgAAAAAAAAASAAAAAgAAAAAAAAASAAEAAgAAAAAAAAASAAIAAgAAAAAAAAASAAMAAgAAAAAAAAASAAQAAgAAAAAAAAASAAUAAgAAAAAAAAASAAYAAgAAAAAAAAASAAcAAgAAAAAAAAASAAgAAgAAAAAAAAASAAkAAgAAAAAAAAASAAoAAgAAAAAAAAASAAsAAgAAAAAAAAASAAwAAgAAAAAAAAASAA0AAgAAAAAAAAATAPz/AgAAAAAAAAATAP3/AgAAAAAAAAATAP7/AgAAAAAAAAATAP//AgAAAAAAAAATAAAAAgAAAAAAAAATAAEAAgAAAAAAAAATAAIAAgAAAAAAAAATAAMAAgAAAAAAAAATAAQAAgAAAAAAAAATAAUAAgAAAAAAAAATAAYAAgAAAAAAAAATAAcAAgAAAAAAAAATAAgAAgAAAAAAAAATAAkAAgAAAAAAAAATAAoAAgAAAAAAAAATAAsAAgAAAAAAAAATAAwAAgAAAAAAAAATAA0AAgAAAAAAAAAUAPz/AgAAAAAAAAAUAP3/AgAAAAAAAAAUAP7/AgAAAAAAAAAUAP//AgAAAAAAAAAUAAAAAgAAAAAAAAAUAAEAAgAAAAAAAAAUAAIAAgAAAAAAAAAUAAMAAgAAAAAAAAAUAAQAAgAAAAAAAAAUAAUAAgAAAAAAAAAUAAYAAgAAAAAAAAAUAAcAAgAAAAAAAAAUAAgAAgAAAAAAAAAUAAkAAgAAAAAAAAAUAAoAAgAAAAAAAAAUAAsAAgAAAAAAAAAUAAwAAgAAAAAAAAAUAA0AAgAAAAAAAAAVAPz/AgAAAAAAAAAVAP3/AgAAAAAAAAAVAP7/AgAAAAAAAAAVAP//AgAAAAAAAAAVAAAAAgAAAAAAAAAVAAEAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAAAAAAVAAQAAgAAAAAAAAAVAAUAAgAAAAAAAAAVAAYAAgAAAAAAAAAVAAcAAgAAAAAAAAAVAAgAAgAAAAAAAAAVAAkAAgAAAAAAAAAVAAoAAgAAAAAAAAAVAAsAAgAAAAAAAAAVAAwAAgAAAAAAAAAVAA0AAgAAAAAAAAAWAPz/AgAAAAAAAAAWAP3/AgAAAAAAAAAWAP7/AgAAAAAAAAAWAP//AgAAAAAAAAAWAAAAAgAAAAAAAAAWAAEAAgAAAAAAAAAWAAIAAgAAAAAAAAAWAAMAAgAAAAAAAAAWAAQAAgAAAAAAAAAWAAUAAgAAAAAAAAAWAAYAAgAAAAAAAAAWAAcAAgAAAAAAAAAWAAgAAgAAAAAAAAAWAAkAAgAAAAAAAAAWAAoAAgAAAAAAAAAWAAsAAgAAAAAAAAAWAAwAAgAAAAAAAAAWAA0AAgAAAAAAAAAXAPz/AgAAAAAAAAAXAP3/AgAAAAAAAAAXAP7/AgAAAAAAAAAXAP//AgAAAAAAAAAXAAAAAgAAAAAAAAAXAAEAAgAAAAAAAAAXAAIAAgAAAAAAAAAXAAMAAgAAAAAAAAAXAAQAAgAAAAAAAAAXAAUAAgAAAAAAAAAXAAYAAgAAAAAAAAAXAAcAAgAAAAAAAAAXAAgAAgAAAAAAAAAXAAkAAgAAAAAAAAAXAAoAAgAAAAAAAAAXAAsAAgAAAAAAAAAXAAwAAgAAAAAAAAAXAA0AAgAAAAAAAAAYAPz/AgAAAAAAAAAYAP3/AgAAAAAAAAAYAP7/AgAAAAAAAAAYAP//AgAAAAAAAAAYAAAAAgAAAAAAAAAYAAEAAgAAAAAAAAAYAAIAAgAAAAAAAAAYAAMAAgAAAAAAAAAYAAQAAgAAAAAAAAAYAAUAAgAAAAAAAAAYAAYAAgAAAAAAAAAYAAcAAgAAAAAAAAAYAAgAAgAAAAAAAAAYAAkAAgAAAAAAAAAYAAoAAgAAAAAAAAAYAAsAAgAAAAAAAAAYAAwAAgAAAAAAAAAYAA0AAgAAAAAAAAAZAPz/AgAAAAAAAAAZAP3/AgAAAAAAAAAZAP7/AgAAAAAAAAAZAP//AgAAAAAAAAAZAAAAAgAAAAAAAAAZAAEAAgAAAAAAAAAZAAIAAgAAAAAAAAAZAAMAAgAAAAAAAAAZAAQAAgAAAAAAAAAZAAUAAgAAAAAAAAAZAAYAAgAAAAAAAAAZAAcAAgAAAAAAAAAZAAgAAgAAAAAAAAAZAAkAAgAAAAAAAAAZAAoAAgAAAAAAAAAZAAsAAgAAAAAAAAAZAAwAAgAAAAAAAAAZAA0AAgAAAAAAAAA=")
 tile_set = ExtResource("1_2g6we")
 
-[node name="Floor" type="TileMapLayer" parent="Tilemap"]
+[node name="Floor" type="TileMapLayer" parent="Tilemap" unique_id=774237894]
 modulate = Color(1, 1, 1, 0.298039)
 tile_map_data = PackedByteArray("AAAJAAMAAwACAAAAAAAJAAQAAwACAAAAAAAJAAUAAwACAAAAAAAJAAYAAwACAAAAAAAKAAIAAwACAAAAAAAKAAMAAwACAAAAAAAKAAQAAwACAAAAAAAKAAUAAwACAAAAAAAKAAYAAwACAAAAAAALAAMAAwACAAAAAAALAAQAAwACAAAAAAALAAUAAwACAAAAAAALAAYAAwACAAAAAAA=")
 tile_set = ExtResource("1_2g6we")
 
-[node name="Midground" type="TileMapLayer" parent="Tilemap"]
+[node name="Midground" type="TileMapLayer" parent="Tilemap" unique_id=1662364260]
 modulate = Color(1, 1, 1, 0.941176)
 tile_map_data = PackedByteArray("AAAJAAIAAwACAAYAAAAKAAQAAwAOAAoAAAAKAAcAAwABABIAAAAKAAgAAwADAAkAAAALAAIAAwADAAYAAAA=")
 tile_set = ExtResource("1_2g6we")
 
-[node name="Foreground" type="TileMapLayer" parent="Tilemap"]
+[node name="Foreground" type="TileMapLayer" parent="Tilemap" unique_id=1613526572]
 modulate = Color(1, 1, 1, 0.941176)
 tile_map_data = PackedByteArray("AAAIAAEAAwAAABAAAAAIAAIAAwAAABEAAAAIAAMAAwAAABEAAAAIAAQAAwAAABEAAAAIAAUAAwAAABEAAAAIAAYAAwAAABEAAAAIAAcAAwAAABIAAAAIAAgAAwAGAA0AAAAJAAEAAwABABAAAAAJAAcAAwABABIAAAAJAAgAAwAHAA0AAAAKAAEAAwABABAAAAALAAEAAwABABAAAAALAAcAAwABABIAAAALAAgAAwAHAA0AAAAMAAEAAwACABAAAAAMAAIAAwACABEAAAAMAAMAAwACABEAAAAMAAQAAwACABEAAAAMAAUAAwACABEAAAAMAAYAAwACABEAAAAMAAcAAwACABIAAAAMAAgAAwAGAA0AAAA=")
 tile_set = ExtResource("1_2g6we")
 
-[node name="PlayerSprite" type="Sprite2D" parent="Tilemap"]
+[node name="PlayerSprite" type="Sprite2D" parent="Tilemap" unique_id=743398553]
 position = Vector2(672, 160)
 texture = ExtResource("5_tkqkb")
 region_enabled = true
 region_rect = Rect2(1600, 0, 64, 64)
 
-[node name="UI Manager" parent="." node_paths=PackedStringArray("navigationManager") instance=ExtResource("6_ul202")]
+[node name="UI Manager" parent="." unique_id=464874346 node_paths=PackedStringArray("navigationManager") instance=ExtResource("6_ul202")]
 navigationManager = NodePath("../NavigationManager")
 
 [editable path="NavigationManager/Location0"]

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cnhvkts3pxspr"]
+[gd_resource type="TileSet" format=3 uid="uid://cnhvkts3pxspr"]
 
 [ext_resource type="Texture2D" uid="uid://rfwbhegvn2a5" path="res://Sprites/TestTiles/Kenney1BitPack64x64Tiles.png" id="1_akcv7"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="2_i3eru"]
@@ -2165,8 +2165,10 @@ texture_region_size = Vector2i(64, 64)
 46:21/0 = 0
 47:21/0 = 0
 48:21/0 = 0
+0:0/0 = 0
 
 [resource]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_wlilk")
 sources/3 = SubResource("TileSetAtlasSource_ititb")

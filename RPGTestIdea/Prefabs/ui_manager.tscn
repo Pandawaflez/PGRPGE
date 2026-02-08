@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbmyf7km57p31"]
+[gd_scene format=3 uid="uid://cbmyf7km57p31"]
 
-[ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://TestScene/ui_manager.gd" id="1_8h12r"]
+[ext_resource type="Script" uid="uid://cuwueus5gdx6d" path="res://RPGTestIdea/TestScene/ui_manager.gd" id="1_8h12r"]
 
 [node name="UI Manager" type="Control" node_paths=PackedStringArray("locationDescriptionBox")]
 layout_mode = 3

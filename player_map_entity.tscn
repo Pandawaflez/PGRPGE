@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bowfh10h85sgx"]
+
+[ext_resource type="Script" uid="uid://cv434iwa0ltnd" path="res://player_map_entity.gd" id="1_udeyg"]
+[ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="2_ksd2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n547l"]
+size = Vector2(48, 48)
+
+[node name="PlayerMapEntity" type="CharacterBody2D" unique_id=1278548234]
+script = ExtResource("1_udeyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312399945]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_n547l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1904254392]
+position = Vector2(0, -8)
+texture = ExtResource("2_ksd2x")
+region_enabled = true
+region_rect = Rect2(1600, 0, 64, 64)

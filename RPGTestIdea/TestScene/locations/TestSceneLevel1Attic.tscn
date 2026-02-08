@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://d21ovohp01jgn"]
+[gd_scene format=4 uid="uid://d21ovohp01jgn"]
 
-[ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://Prefabs/BaseLevel.tscn" id="1_rbkhl"]
-[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://Prefabs/Location.tscn" id="2_osl6c"]
-[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://Prefabs/Action.tscn" id="3_5lsq0"]
+[ext_resource type="PackedScene" uid="uid://bdyonxguyf7ds" path="res://RPGTestIdea/Prefabs/BaseLevel.tscn" id="1_rbkhl"]
+[ext_resource type="PackedScene" uid="uid://doe33lcmiauka" path="res://RPGTestIdea/Prefabs/Location.tscn" id="2_osl6c"]
+[ext_resource type="PackedScene" uid="uid://b4wf3ge15jim4" path="res://RPGTestIdea/Prefabs/Action.tscn" id="3_5lsq0"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="4_kvsom"]
 
 [sub_resource type="Animation" id="Animation_kvsom"]

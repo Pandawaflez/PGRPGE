@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdyonxguyf7ds"]
+[gd_scene format=3 uid="uid://bdyonxguyf7ds"]
 
-[ext_resource type="PackedScene" uid="uid://c02sqiop2pv4p" path="res://Prefabs/navigation_manager.tscn" id="1_8iie0"]
-[ext_resource type="PackedScene" uid="uid://c2hrtj4rwqsyo" path="res://Prefabs/baseTilemap.tscn" id="2_8iie0"]
-[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://Prefabs/ui_manager.tscn" id="4_bjw3f"]
+[ext_resource type="PackedScene" uid="uid://c02sqiop2pv4p" path="res://RPGTestIdea/Prefabs/navigation_manager.tscn" id="1_8iie0"]
+[ext_resource type="PackedScene" uid="uid://c2hrtj4rwqsyo" path="res://RPGTestIdea/Prefabs/baseTilemap.tscn" id="2_8iie0"]
+[ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://RPGTestIdea/Prefabs/ui_manager.tscn" id="4_bjw3f"]
 
 [node name="BaseLevel" type="Node2D"]
 

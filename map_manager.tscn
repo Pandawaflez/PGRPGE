@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bqc5pjh4bxu6h"]
 
+[ext_resource type="Script" uid="uid://bcavdtmrx5sx5" path="res://map_management.gd" id="1_dptv2"]
 [ext_resource type="TileSet" uid="uid://cnhvkts3pxspr" path="res://Sprites/TestTiles/BasicTileset.tres" id="1_k8m7k"]
 [ext_resource type="PackedScene" uid="uid://bowfh10h85sgx" path="res://player_map_entity.tscn" id="2_b4adm"]
 [ext_resource type="PackedScene" uid="uid://bgpyctanat6fa" path="res://map_entity.tscn" id="3_lhlev"]
@@ -9,6 +10,7 @@
 size = Vector2(176, 112.25)
 
 [node name="MapManager" type="Node2D" unique_id=552458094]
+script = ExtResource("1_dptv2")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=174820563]
 position = Vector2(0, 128)

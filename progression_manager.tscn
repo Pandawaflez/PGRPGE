@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5g8yba76m03g" path="res://RPGTestIdea/Scripts/progressionManagment.gd" id="1_ne6it"]
 
-[node name="ProgressionManager" type="Node2D" unique_id=185135515]
+[node name="ProgressionManager" type="Node" unique_id=1099256361]
 script = ExtResource("1_ne6it")
 progressionDictionary = {
 "NewProgressionTest": 0,

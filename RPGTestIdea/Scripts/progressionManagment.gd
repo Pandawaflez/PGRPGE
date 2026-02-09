@@ -1,8 +1,22 @@
 class_name ProgressionManagement
-extends Resource
+extends Node
 
 @export var progressionDictionary:Dictionary = {}
 
+func getProgValue( value:String ):
+	if progressionDictionary[value] == null:
+		return -1
+	return progressionDictionary[value]
+
+func setProgValue( value:String , newVal: int ):
+	print("Setting Value" + value + "in Prog Manager to:" + str(newVal) )
+	progressionDictionary[value] = newVal
+	var mapManager = get_tree().get_firswt_node_in_group("map_manager")
+	if mapManager != null:
+		mapManager.updateProgression()
+
+
+"""
 # Check if the value from a given data source is the same as a particular int
 # input:
 #	value we want to compare
@@ -24,13 +38,4 @@ func checkProgression( value:String , from:String , comparison:int ) -> bool:
 	else:
 		print("could not properly check value.")
 		print("Data Source: |" + from + "| not found.")
-		return false
-
-func getProgValue( value:String ):
-	if progressionDictionary[value] == null:
-		return -1
-	return progressionDictionary[value]
-
-func setProgValue( value:String , newVal: int ):
-	print("Setting Value" + value + "in Prog Manager to:" + str(newVal) )
-	progressionDictionary[value] = newVal
+		return false"""

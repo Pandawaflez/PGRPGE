@@ -5,6 +5,10 @@ extends CharacterBody2D
 @export var progressionValueArray:Array[int] = []
 @export var progressionEffectArray:Array[String] = []
 
+@export var interactionTriggerArray:Array[int] = []
+@export var interactionValueArray:Array[int] = []
+#@export var interactionEffectArray:Array[String] = []
+
 const TILE_SIZE := 64
 const MOVE_TIME := 0.15
 
@@ -30,7 +34,16 @@ func calculateProgressionTrigger() -> void:
 	if counterCap >= progressionValueArray.size():
 		counterCap = progressionValueArray.size()
 	while counter < counterCap:
-		pass
+		if ProgressionManager.getProgValue( progressionTriggerArray[counter] ) == progressionValueArray[counter]:
+			if ( progressionEffectArray[counter] == "Disable" ):
+				print("Disabling map entity because progression.")
+				hide()
+			elif ( progressionEffectArray[counter] == "Enable" ):
+				print("Disabling map entity because progression.")
+				show()
+			else:
+				print("Progression trigger type " , progressionValueArray[counter] , " not found." )
+		counter += 1
 	return
 
 func interact( _from: MapEntity ) -> void:

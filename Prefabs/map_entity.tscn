@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgpyctanat6fa"]
 
-[ext_resource type="Script" uid="uid://c5y7o8fectgxw" path="res://map_entity.gd" id="1_q48y8"]
+[ext_resource type="Script" uid="uid://c5y7o8fectgxw" path="res://Scripts/map_entity.gd" id="1_q48y8"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="2_jncto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n547l"]
@@ -10,7 +10,6 @@ size = Vector2(48, 48)
 script = ExtResource("1_q48y8")
 progressionTriggerArray = Array[String]([""])
 progressionValueArray = Array[int]([0])
-progressionEffectArray = Array[String](["Appear"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312399945]
 position = Vector2(0, -8)

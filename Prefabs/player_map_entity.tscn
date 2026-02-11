@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bowfh10h85sgx"]
 
-[ext_resource type="Script" uid="uid://cv434iwa0ltnd" path="res://player_map_entity.gd" id="1_udeyg"]
+[ext_resource type="Script" uid="uid://cv434iwa0ltnd" path="res://Scripts/player_map_entity.gd" id="1_udeyg"]
 [ext_resource type="Texture2D" uid="uid://cxvadgnb26puw" path="res://Sprites/TestTiles/Kenney1BitPack64x64Transparent.png" id="2_ksd2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n547l"]

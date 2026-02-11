@@ -1,13 +1,16 @@
 class_name MapEntity
 extends CharacterBody2D
 
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+@export var hasProgressionTrigger:bool = false
 @export var progressionTriggerArray:Array[String] = []
 @export var progressionValueArray:Array[int] = []
-@export var progressionEffectArray:Array[String] = []
 
-@export var interactionTriggerArray:Array[int] = []
-@export var interactionValueArray:Array[int] = []
-#@export var interactionEffectArray:Array[String] = []
+@export var hasInteractionEffects:bool = false
+@export var interactionEffectArray:Array[String] = []
+@export var interactionEffectValueArray:Array[String] = []
 
 const TILE_SIZE := 64
 const MOVE_TIME := 0.15
@@ -26,29 +29,49 @@ var facing: Direction = Direction.DOWN
 func _ready():
 	add_to_group("map_entities")
 
+func disable():
+	collision_shape_2d.disabled = true
+	hide()
+	return
+
+func enable():
+	collision_shape_2d.disabled = false
+	show()
+	return
+
 func calculateProgressionTrigger() -> void:
+	if not hasProgressionTrigger:
+		return
+	print("Calculating progression trigger")
 	var counter:int = 0
 	var counterCap:int = progressionTriggerArray.size()
-	if counterCap >= progressionEffectArray.size():
-		counterCap = progressionEffectArray.size()
 	if counterCap >= progressionValueArray.size():
 		counterCap = progressionValueArray.size()
+	print("Array size: " , counterCap )
 	while counter < counterCap:
 		if ProgressionManager.getProgValue( progressionTriggerArray[counter] ) == progressionValueArray[counter]:
-			if ( progressionEffectArray[counter] == "Disable" ):
-				print("Disabling map entity because progression.")
-				hide()
-			elif ( progressionEffectArray[counter] == "Enable" ):
-				print("Disabling map entity because progression.")
-				show()
-			else:
-				print("Progression trigger type " , progressionValueArray[counter] , " not found." )
+			enable()
+		else:
+			disable()
 		counter += 1
 	return
 
 func interact( _from: MapEntity ) -> void:
 	print("Entity interacted with.")
-
+	var counter:int = 0
+	while counter < interactionEffectArray.size():
+		if interactionEffectArray[counter] == "Dialogue":
+			print("Doing Dialogue")
+		elif interactionEffectArray[counter] == "Update Progression":
+			print("Updating Progression")
+			if counter+1 < interactionEffectValueArray.size():
+				ProgressionManager.setProgValue(interactionEffectValueArray[counter] , int(interactionEffectValueArray[counter+1]) )
+				counter += 1
+			else:
+				print ( "[ERROR]: unable to update Progression due to seg fault danger" )
+		else:
+			print("Some other thing")
+		counter += 1
 func try_move(distance: int, direction: Direction) -> bool:
 	facing = direction
 	if is_moving:

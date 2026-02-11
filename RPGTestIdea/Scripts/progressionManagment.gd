@@ -4,17 +4,20 @@ extends Node
 @export var progressionDictionary:Dictionary = {}
 
 func getProgValue( value:String ):
-	if progressionDictionary[value] == null:
+	print("Retrieving Prog value " , value )
+	if progressionDictionary.get(value) == null:
+		print( "Prog value " , value , "not found" )
 		return -1
 	return progressionDictionary[value]
 
 func setProgValue( value:String , newVal: int ):
-	print("Setting Value" + value + "in Prog Manager to:" + str(newVal) )
+	print("Setting Value " + value + " in Prog Manager to:" + str(newVal) )
 	progressionDictionary[value] = newVal
-	var mapManager = get_tree().get_firswt_node_in_group("map_manager")
+	var mapManager = get_tree().get_first_node_in_group("map_manager")
 	if mapManager != null:
 		mapManager.updateProgression()
-
+	else:
+		print("ERROR: Map manager not found when trying to update progression")
 
 """
 # Check if the value from a given data source is the same as a particular int

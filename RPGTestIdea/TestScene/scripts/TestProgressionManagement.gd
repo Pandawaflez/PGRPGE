@@ -1,4 +1,4 @@
-class_name TestProgressionManagement
+"""class_name TestProgressionManagement
 extends ProgressionManagement
 
 # to Add values, just add them here, and in the getProgValue match statement:
@@ -24,4 +24,4 @@ func setProgValue( value: String , newVal:int ):
 			chestQuest = newVal
 		_: # default
 			print("This is the Test Progression Progression Manager")
-			return testValue
+			return testValue"""

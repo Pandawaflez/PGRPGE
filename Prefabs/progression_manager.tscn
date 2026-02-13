@@ -5,6 +5,6 @@
 [node name="ProgressionManager" type="Node" unique_id=1099256361]
 script = ExtResource("1_ne6it")
 progressionDictionary = {
-"NewProgressionTest": 0,
+"NewProgressionTest": true,
 "ProgressionTest": false
 }

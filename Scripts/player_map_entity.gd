@@ -41,8 +41,9 @@ func _try_interact() -> void:
 		if entity == self:
 			continue
 		if entity.global_position == check_pos:
-			entity.interact(self)
-			return
+			if entity.visible:
+				entity.interact(self)
+				return
 
 func _start_move(direction: Direction) -> void:
 	held_direction = direction

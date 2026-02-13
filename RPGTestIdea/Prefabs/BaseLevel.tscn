@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://c2hrtj4rwqsyo" path="res://RPGTestIdea/Prefabs/baseTilemap.tscn" id="2_8iie0"]
 [ext_resource type="PackedScene" uid="uid://cbmyf7km57p31" path="res://RPGTestIdea/Prefabs/ui_manager.tscn" id="4_bjw3f"]
 
-[node name="BaseLevel" type="Node2D"]
+[node name="BaseLevel" type="Node2D" unique_id=580286310]
 
-[node name="NavigationManager" parent="." node_paths=PackedStringArray("uIManager", "playerSprite") instance=ExtResource("1_8iie0")]
+[node name="NavigationManager" parent="." unique_id=2142190682 node_paths=PackedStringArray("uIManager", "playerSprite") instance=ExtResource("1_8iie0")]
 uIManager = NodePath("../UI Manager")
 playerSprite = NodePath("../Tilemap/PlayerSprite")
 
-[node name="Tilemap" parent="." instance=ExtResource("2_8iie0")]
+[node name="Tilemap" parent="." unique_id=13038424 instance=ExtResource("2_8iie0")]
 position = Vector2(-64, 64)
 
-[node name="UI Manager" parent="." node_paths=PackedStringArray("navigationManager") instance=ExtResource("4_bjw3f")]
+[node name="UI Manager" parent="." unique_id=1545958855 node_paths=PackedStringArray("navigationManager") instance=ExtResource("4_bjw3f")]
 navigationManager = NodePath("../NavigationManager")
 
 [editable path="Tilemap"]

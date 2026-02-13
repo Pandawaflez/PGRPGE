@@ -109,18 +109,40 @@ shape = SubResource("RectangleShape2D_uyabe")
 [node name="PlayerMapEntity" parent="." unique_id=1278548234 instance=ExtResource("3_kw862")]
 position = Vector2(416, 168)
 
-[node name="MapEntity" parent="." unique_id=1007337317 instance=ExtResource("4_fsxni")]
-position = Vector2(608, 296)
+[node name="SwitchClosed" parent="." unique_id=1007337317 instance=ExtResource("4_fsxni")]
+position = Vector2(544, 424)
 hasProgressionTrigger = true
 progressionTriggerArray = Array[String](["NewProgressionTest"])
 hasInteractionEffects = true
 interactionEffectArray = Array[String](["Update Progression"])
 interactionEffectValueArray = Array[String](["NewProgressionTest", "1"])
 
-[node name="MapEntity2" parent="." unique_id=541796726 instance=ExtResource("4_fsxni")]
-position = Vector2(608, 232)
+[node name="Sprite2D" parent="SwitchClosed" index="1" unique_id=1904254392]
+region_rect = Rect2(256, 640, 64, 64)
+
+[node name="SwitchOpen" parent="." unique_id=1143183352 instance=ExtResource("4_fsxni")]
+position = Vector2(544, 424)
+hasProgressionTrigger = true
+progressionTriggerArray = Array[String](["NewProgressionTest"])
+progressionValueArray = Array[int]([1])
+hasInteractionEffects = true
+interactionEffectArray = Array[String](["Update Progression"])
+interactionEffectValueArray = Array[String](["NewProgressionTest", "0"])
+
+[node name="Sprite2D" parent="SwitchOpen" index="1" unique_id=1904254392]
+region_rect = Rect2(192, 640, 64, 64)
+
+[node name="Door1" parent="." unique_id=541796726 instance=ExtResource("4_fsxni")]
+position = Vector2(736, 296)
 hasProgressionTrigger = true
 progressionTriggerArray = Array[String](["NewProgressionTest"])
 progressionValueArray = Array[int]([1])
 hasInteractionEffects = true
 interactionEffectArray = Array[String](["Dialogue"])
+
+[node name="Sprite2D" parent="Door1" index="1" unique_id=1904254392]
+region_rect = Rect2(832, 704, 64, 64)
+
+[editable path="SwitchClosed"]
+[editable path="SwitchOpen"]
+[editable path="Door1"]

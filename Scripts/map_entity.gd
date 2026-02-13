@@ -49,7 +49,7 @@ func calculateProgressionTrigger() -> void:
 		counterCap = progressionValueArray.size()
 	print("Array size: " , counterCap )
 	while counter < counterCap:
-		if ProgressionManager.getProgValue( progressionTriggerArray[counter] ) == progressionValueArray[counter]:
+		if int(ProgressionManager.getProgValue( progressionTriggerArray[counter] )) == progressionValueArray[counter]:
 			enable()
 		else:
 			disable()
@@ -70,7 +70,7 @@ func interact( _from: MapEntity ) -> void:
 			else:
 				print ( "[ERROR]: unable to update Progression due to seg fault danger" )
 		else:
-			print("Some other thing")
+			print("[ERROR]: Some other thing " , interactionEffectArray[counter] )
 		counter += 1
 func try_move(distance: int, direction: Direction) -> bool:
 	facing = direction

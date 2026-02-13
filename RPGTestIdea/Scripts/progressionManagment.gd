@@ -1,14 +1,19 @@
 class_name ProgressionManagement
 extends Node
 
+@export var isGlobalProgressionManager:bool = false
 @export var progressionDictionary:Dictionary = {}
 
 func getProgValue( value:String ):
 	print("Retrieving Prog value " , value )
 	if progressionDictionary.get(value) == null:
 		print( "Prog value " , value , "not found" )
-		return -1
-	return progressionDictionary[value]
+		if isGlobalProgressionManager:
+			var mapManager = get_tree().get_first_node_in_group("map_manager")
+			return mapManager.getProgValue(value)
+		else:
+			return -1
+	return progressionDictionary.get(value)
 
 func setProgValue( value:String , newVal: int ):
 	print("Setting Value " + value + " in Prog Manager to:" + str(newVal) )

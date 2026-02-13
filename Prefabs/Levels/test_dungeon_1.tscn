@@ -27,7 +27,7 @@ size = Vector2(48.125, 752)
 size = Vector2(752.25, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyabe"]
-size = Vector2(48, 368)
+size = Vector2(48, 352)
 
 [node name="TestDungeon1" type="Node2D" unique_id=1152470783]
 script = ExtResource("1_q88v0")
@@ -103,7 +103,7 @@ shape = SubResource("RectangleShape2D_fsxni")
 [node name="Area2D" type="StaticBody2D" parent="Walls" unique_id=448125409]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D" unique_id=1350645373]
-position = Vector2(352, 136)
+position = Vector2(352, 128)
 shape = SubResource("RectangleShape2D_uyabe")
 
 [node name="PlayerMapEntity" parent="." unique_id=1278548234 instance=ExtResource("3_kw862")]

@@ -49,7 +49,7 @@ func calculateProgressionTrigger() -> void:
 		counterCap = progressionValueArray.size()
 	print("Array size: " , counterCap )
 	while counter < counterCap:
-		if int(ProgressionManager.getProgValue( progressionTriggerArray[counter] )) == progressionValueArray[counter]:
+		if is_same( ProgressionManager.getProgValue( progressionTriggerArray[counter] ) , progressionValueArray[counter] ):
 			enable()
 		else:
 			disable()

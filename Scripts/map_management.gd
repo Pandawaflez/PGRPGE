@@ -1,4 +1,6 @@
-extends Node2D
+class_name MapManager
+extends ProgressionManagement
+#extends Node2D
 
 func _ready() -> void:
 	add_to_group("map_manager")

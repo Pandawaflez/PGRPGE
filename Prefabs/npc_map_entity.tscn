@@ -8,9 +8,8 @@ script = ExtResource("2_py2iv")
 isIdleMoving = false
 idleMovementScript = Array[int]([])
 idleMovementDelay = 1.0
-
-[node name="CollisionShape2D" parent="." index="0" unique_id=1312399945]
-visible = true
+hasProgressionTrigger = true
+progressionTriggerArray = Array[String](["MinecartActive"])
 
 [node name="Sprite2D" parent="." index="1" unique_id=1904254392]
 region_rect = Rect2(1728, 64, 64, 64)

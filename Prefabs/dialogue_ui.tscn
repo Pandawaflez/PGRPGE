@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cqd3b3o07ufcl"]
+
+[ext_resource type="Script" uid="uid://cs1fowixjax0j" path="res://Scripts/Dialogue/dialogue_ui.gd" id="1_aplyl"]
+
+[node name="DialogueUI" type="Control" unique_id=529100211]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aplyl")
+
+[node name="Panel" type="Panel" parent="." unique_id=676465905]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1839416504]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 128.0
+offset_bottom = 24.0
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Panel" unique_id=1793718903]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 128.0
+offset_bottom = 64.0
+
+[node name="TopicsScrollContainer" type="ScrollContainer" parent="Panel" unique_id=572916870]
+layout_mode = 0
+offset_left = 152.0
+offset_right = 192.0
+offset_bottom = 64.0
+
+[node name="TopicsContainer" type="VBoxContainer" parent="Panel/TopicsScrollContainer" unique_id=1374596168]
+layout_mode = 2

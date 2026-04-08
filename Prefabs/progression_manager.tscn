@@ -6,6 +6,6 @@
 script = ExtResource("1_ne6it")
 isGlobalProgressionManager = true
 progressionDictionary = {
-"NewProgressionTest": true,
+"NewProgressionTest": 1,
 "ProgressionTest": false
 }

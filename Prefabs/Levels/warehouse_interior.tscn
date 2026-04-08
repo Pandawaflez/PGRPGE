@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bgpyctanat6fa" path="res://Prefabs/map_entity.tscn" id="4_he7gy"]
 [ext_resource type="PackedScene" uid="uid://j2q0qvkmn11j" path="res://Prefabs/npc_map_entity.tscn" id="5_s0gha"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22lr7"]
+size = Vector2(122, 50.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro4ay"]
+size = Vector2(560, 50.75)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4a5r"]
 size = Vector2(40, 619)
 
@@ -62,6 +68,14 @@ tile_set = ExtResource("2_s0gha")
 
 [node name="Area2D" type="StaticBody2D" parent="Walls" unique_id=448125409]
 position = Vector2(-64, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Area2D" unique_id=1531528543]
+position = Vector2(445, 225.375)
+shape = SubResource("RectangleShape2D_22lr7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/Area2D" unique_id=404442904]
+position = Vector2(864, 224)
+shape = SubResource("RectangleShape2D_ro4ay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D" unique_id=1350645373]
 position = Vector2(352, 69.5)

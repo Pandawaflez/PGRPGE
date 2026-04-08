@@ -22,6 +22,7 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 ProgressionManager="*uid://b80jxlmpo2kqk"
+DialogueManager="*uid://d1v077dp8ydlm"
 
 [display]
 
